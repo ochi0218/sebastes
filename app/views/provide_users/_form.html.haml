@@ -1,0 +1,11 @@
+= simple_form_for @provide_user, html: { class: 'form-horizontal' } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :provider_name
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'

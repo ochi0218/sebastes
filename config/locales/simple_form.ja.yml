@@ -20,4 +20,19 @@ ja:
         description: 商品説明
         display_flag: 表示フラグ
         sort_no: 表示順
-
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        remember_me: ログインしたままにする
+        current_password: 現在パスワード
+      provide_user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        provider_name: 業者名
+      admin_user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        

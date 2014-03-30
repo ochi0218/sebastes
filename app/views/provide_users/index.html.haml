@@ -1,0 +1,17 @@
+%h1 Listing provide_users
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @provide_users.each do |provide_user|
+    %tr
+      %td= link_to 'Show', provide_user
+      %td= link_to 'Edit', edit_provide_user_path(provide_user)
+      %td= link_to 'Destroy', provide_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Provide user', new_provide_user_path
