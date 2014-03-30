@@ -1,13 +1,13 @@
-= simple_form_for(@item) do |f|
-  = f.error_notification
+= simple_form_for @item, html: { class: 'form-horizontal', multipart: true } do |f|
+  - if notification = f.error_notification
+    = notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :image
-    = f.input :price
-    = f.input :description
-    = f.input :display_flag
-    = f.input :sort_no
+  = f.input :name
+  = f.input :image
+  = f.input :price
+  = f.input :description
+  = f.input :display_flag
+  = f.input :sort_no
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-primary'

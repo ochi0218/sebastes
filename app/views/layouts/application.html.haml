@@ -1,9 +1,34 @@
 !!!
 %html
   %head
-    %title Sebastes
+    %title #{t('site_title')}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = yield
+    %header#header.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          = link_to t('site_title'), root_path, class: 'navbar-brand'
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to t('top_nav.titles.contact'), 'mailto:'
+    .cotainer-fluid
+      .row
+        #sideber.col-sm-3.col-md-2.sidebar
+          %ul.nav.nav-sidebar
+        #main.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          - if notice or alert
+            .notify-block
+              - if notice
+                .alert.alert-info= notice
+              - if alert
+                .alert.alert-danger= alert
+          - if @page_title
+            .page_title
+              %h1 #{@page_title}
+          .contents
+            = yield
+    %fotter#fotter.fotter
+
