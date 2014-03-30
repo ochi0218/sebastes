@@ -36,6 +36,10 @@ gem 'haml-rails'
 # # Authentication
 gem 'devise'
 
+# File uploader
+gem 'carrierwave'
+gem 'fog'
+
 group :development do
   gem 'erb2haml'
 end
