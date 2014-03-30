@@ -1,9 +1,9 @@
-%h1 Listing provide_users
+%h1= ProvideUser.model_name.human
 
-%table
+%table.table.table-striped.table-hover
   %tr
-    %th Email
-    %th ProviderName
+    %th= ProvideUser.human_attribute_name(:email)
+    %th= ProvideUser.human_attribute_name(:provider_name)
     %th
     %th
     %th

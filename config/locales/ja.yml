@@ -225,15 +225,28 @@ ja:
       <<: *errors
   activerecord:
     models:
-      item: 商品
+      item: '商品'
+      user: 'ユーザ'
+      provide_user: '業者アカウント'
     attributes:
       item:
-        name: 商品名
-        image: 商品画像
-        price: 価格
-        description: 商品説明
-        display_flag: 表示フラグ
-        sort_no: 表示順
+        name: '商品名'
+        image: '商品画像'
+        price: '価格'
+        description: '商品説明'
+        display_flag: '表示フラグ'
+        sort_no: '表示順'
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        remember_me: 'ログインしたままにする'
+        current_password: '現在パスワード'
+      provide_user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        provider_name: '業者名'
     errors:
       <<: *errors
   views:

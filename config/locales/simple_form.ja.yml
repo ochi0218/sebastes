@@ -5,34 +5,31 @@ ja:
     required:
       text: '必須です。'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "以下の問題を確認してください。"
+      default_message: '以下の問題を確認してください。'
     hints:
     placeholders:
     labels:
       item:
-        name: 商品名
-        image: 商品画像
-        price: 価格
-        description: 商品説明
-        display_flag: 表示フラグ
-        sort_no: 表示順
+        name: '商品名'
+        image: '商品画像'
+        price: '価格'
+        description: '商品説明'
+        display_flag: '表示フラグ'
+        sort_no: '表示順'
       user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード確認
-        remember_me: ログインしたままにする
-        current_password: 現在パスワード
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        remember_me: 'ログインしたままにする'
+        current_password: '現在パスワード'
       provide_user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード確認
-        provider_name: 業者名
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        provider_name: '業者名'
       admin_user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード確認
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
         
