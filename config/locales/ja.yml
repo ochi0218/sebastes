@@ -224,6 +224,16 @@ ja:
     errors:
       <<: *errors
   activerecord:
+    models:
+      item: 商品
+    attributes:
+      item:
+        name: 商品名
+        image: 商品画像
+        price: 価格
+        description: 商品説明
+        display_flag: 表示フラグ
+        sort_no: 表示順
     errors:
       <<: *errors
   views:
@@ -236,4 +246,5 @@ ja:
     page_info:
       page: "ページ %{current} / %{total}"
       records: "%{total}件中 %{offset}〜%{limit}件を表示しています"
+  site_title: さくらマーケット
 
