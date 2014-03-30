@@ -2,12 +2,16 @@
 
 %table
   %tr
+    %th Email
+    %th ProviderName
     %th
     %th
     %th
 
   - @provide_users.each do |provide_user|
     %tr
+      %td= provide_user.email
+      %td= provide_user.provider_name
       %td= link_to 'Show', provide_user
       %td= link_to 'Edit', edit_provide_user_path(provide_user)
       %td= link_to 'Destroy', provide_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
