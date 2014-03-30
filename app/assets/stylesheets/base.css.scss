@@ -1,0 +1,73 @@
+@import "bootstrap";
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+
+    ul.nav-sidebar {
+        margin-right: -21px;
+        margin-bottom: 20px;
+        margin-left: -20px;
+        li {
+            position: relative;
+            display: block;
+
+            a {
+                color: #428bca;
+                text-decoration: none;
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+        }
+        li.active {
+            a {
+                color: #fff;
+                background-color: #428bca;
+            }
+        }
+    }
+}
+
+.notify-block {
+}
+.main {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 70px;
+    padding-bottom: 20px;
+
+    .page_title {
+        margin-top: 0 !important;
+        padding-bottom: 9px;
+        margin: 40px 0 20px;
+        border-bottom: 1px solid #eee;
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.help-block {
+    padding-left: 12px;
+}
+
+.btn-white {
+    color: #fff !important;
+}
+
+.show {
+    div.row {
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+}
