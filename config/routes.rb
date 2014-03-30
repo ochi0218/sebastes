@@ -1,4 +1,6 @@
 Sebastes::Application.routes.draw do
+  resources :items
+
   devise_for :provide_users
   devise_for :admin_users
   devise_for :users
