@@ -1,23 +1,29 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @item.name
-%p
-  %b Image:
-  = @item.image
-%p
-  %b Price:
-  = @item.price
-%p
-  %b Description:
-  = @item.description
-%p
-  %b Display flag:
-  = @item.display_flag
-%p
-  %b Sort no:
-  = @item.sort_no
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:name)
+    %div.col-sm-10
+      = @item.name
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:image)
+    %div.col-sm-10
+      = @item.image
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:price)
+    %div.col-sm-10
+      = @item.price
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:description)
+    %div.col-sm-10
+      = @item.description
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:display_flag)
+    %div.col-sm-10
+      = @item.display_flag
 
 = link_to 'Edit', edit_item_path(@item)
 \|

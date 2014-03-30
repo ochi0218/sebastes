@@ -1,17 +1,24 @@
-%p#notice= notice
-
-%p
-  %b Code:
-  = @coupon.code
-%p
-  %b Point:
-  = @coupon.point
-%p
-  %b Used:
-  = @coupon.used
-%p
-  %b Used datetime:
-  = @coupon.used_datetime
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= Coupon.human_attribute_name(:code)
+    %div.col-sm-10
+      = @coupon.code
+  %div.row
+    %div.col-sm-2
+      %b= Coupon.human_attribute_name(:point)
+    %div.col-sm-10
+      = @coupon.point
+  %div.row
+    %div.col-sm-2
+      %b= Coupon.human_attribute_name(:used)
+    %div.col-sm-10
+      = @coupon.used
+  %div.row
+    %div.col-sm-2
+      %b= Coupon.human_attribute_name(:used_datetime)
+    %div.col-sm-10
+      = @coupon.used_datetime
 
 = link_to 'Edit', edit_coupon_path(@coupon)
 \|

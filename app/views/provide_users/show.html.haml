@@ -1,5 +1,14 @@
-%p#notice= notice
-
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= ProvideUser.human_attribute_name(:email)
+    %div.col-sm-10
+      = @provide_user.email
+  %div.row
+    %div.col-sm-2
+      %b= ProvideUser.human_attribute_name(:provider_name)
+    %div.col-sm-10
+      = @provide_user.provider_name
 
 = link_to 'Edit', edit_provide_user_path(@provide_user)
 \|
