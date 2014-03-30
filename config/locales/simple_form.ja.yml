@@ -32,4 +32,7 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
-        
+      coupon:
+        code: 'クーポンコード'
+        point: 'ポイント'
+

@@ -1,0 +1,25 @@
+%h1= Coupon.model_name.human
+
+%table.table.table-striped.table-hover
+  %tr
+    %th= Coupon.human_attribute_name(:code)
+    %th= Coupon.human_attribute_name(:point)
+    %th= Coupon.human_attribute_name(:used)
+    %th= Coupon.human_attribute_name(:used_datetime)
+    %th
+    %th
+    %th
+
+  - @coupons.each do |coupon|
+    %tr
+      %td= coupon.code
+      %td= coupon.point
+      %td= coupon.used
+      %td= coupon.used_datetime
+      %td= link_to 'Show', coupon
+      %td= link_to 'Edit', edit_coupon_path(coupon)
+      %td= link_to 'Destroy', coupon, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Coupon', new_coupon_path

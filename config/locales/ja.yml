@@ -228,6 +228,7 @@ ja:
       item: '商品'
       user: 'ユーザ'
       provide_user: '業者アカウント'
+      coupon: 'クーポン'
     attributes:
       item:
         name: '商品名'
@@ -247,6 +248,11 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         provider_name: '業者名'
+      coupon:
+        code: 'クーポンコード'
+        point: 'ポイント'
+        used: 'クーポン利用'
+        used_datetime: 'クーポン利用日'
     errors:
       <<: *errors
   views:

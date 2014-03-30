@@ -1,0 +1,9 @@
+= simple_form_for @coupon, html: { class: 'form-horizontal' } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :code
+  = f.input :point
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'

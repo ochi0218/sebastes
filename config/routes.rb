@@ -1,4 +1,6 @@
 Sebastes::Application.routes.draw do
+  resources :coupons
+
   resources :items
   resources :users
   resources :provide_users
