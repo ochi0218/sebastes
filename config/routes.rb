@@ -1,8 +1,9 @@
 Sebastes::Application.routes.draw do
-  get "home/index"
   devise_for :provide_users
   devise_for :admin_users
   devise_for :users
+
+  get "home/index"
 
   namespace :admin do
     root 'items#index'
@@ -10,6 +11,11 @@ Sebastes::Application.routes.draw do
     resources :items
     resources :users
     resources :provide_users
+  end
+
+  namespace :provide do
+    root 'items#index'
+    resources :items, only: [:index, :show, :edit, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

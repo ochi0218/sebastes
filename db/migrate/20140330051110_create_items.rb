@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration
       t.text :description
       t.boolean :display_flag
       t.integer :sort_no
+      t.integer :stock, default: 0
 
       t.timestamps
     end

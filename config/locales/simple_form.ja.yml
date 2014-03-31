@@ -17,6 +17,7 @@ ja:
         description: '商品説明'
         display_flag: '表示フラグ'
         sort_no: '表示順'
+        stock: '在庫'
       user:
         email: 'メールアドレス'
         password: 'パスワード'
