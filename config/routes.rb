@@ -1,4 +1,5 @@
 Sebastes::Application.routes.draw do
+  get "home/index"
   devise_for :provide_users
   devise_for :admin_users
   devise_for :users
