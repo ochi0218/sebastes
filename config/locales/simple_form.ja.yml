@@ -8,6 +8,8 @@ ja:
     error_notification:
       default_message: '以下の問題を確認してください。'
     hints:
+      coupon:
+        code: '英数字12桁で登録してください。'
     placeholders:
     labels:
       item:
