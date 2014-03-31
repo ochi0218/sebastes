@@ -1,0 +1,7 @@
+- @page_title = t('helpers.titles.edit', { model: Item.model_name.human })
+
+= render 'form'
+
+= link_to 'Show', [:admin, @item]
+\|
+= link_to 'Back', admin_items_path

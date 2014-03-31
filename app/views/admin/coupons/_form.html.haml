@@ -1,4 +1,4 @@
-= simple_form_for @coupon, html: { class: 'form-horizontal' } do |f|
+= simple_form_for [:admin, @coupon], html: { class: 'form-horizontal' } do |f|
   - if notification = f.error_notification
     = notification
 

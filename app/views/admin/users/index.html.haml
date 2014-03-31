@@ -1,0 +1,19 @@
+- @page_title = t('helpers.titles.list', { model: User.model_name.human })
+
+%table
+  %tr
+    %th= User.human_attribute_name(:email)
+    %th
+    %th
+    %th
+
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= link_to 'Show', [:admin, user]
+      %td= link_to 'Edit', edit_admin_user_path(user)
+      %td= link_to 'Destroy', [:admin, user], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New User', new_admin_user_path

@@ -1,3 +1,5 @@
+- @page_title = t('helpers.titles.show', { model: Coupon.model_name.human })
+
 %div.show
   %div.row
     %div.col-sm-2
@@ -20,6 +22,6 @@
     %div.col-sm-10
       = @coupon.used_datetime
 
-= link_to 'Edit', edit_coupon_path(@coupon)
+= link_to 'Edit', edit_admin_coupon_path(@coupon)
 \|
-= link_to 'Back', coupons_path
+= link_to 'Back', admin_coupons_path

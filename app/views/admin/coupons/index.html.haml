@@ -1,4 +1,4 @@
-%h1= Coupon.model_name.human
+- @page_title = t('helpers.titles.list', { model: Coupon.model_name.human })
 
 %table.table.table-striped.table-hover
   %tr
@@ -16,10 +16,10 @@
       %td= coupon.point
       %td= coupon.used
       %td= coupon.used_datetime
-      %td= link_to 'Show', coupon
-      %td= link_to 'Edit', edit_coupon_path(coupon)
-      %td= link_to 'Destroy', coupon, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', [:admin, coupon]
+      %td= link_to 'Edit', edit_admin_coupon_path(coupon)
+      %td= link_to 'Destroy', [:admin, coupon], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Coupon', new_coupon_path
+= link_to 'New Coupon', new_admin_coupon_path

@@ -1,0 +1,12 @@
+- @page_title = t('helpers.titles.show', { model: User.model_name.human })
+
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:email)
+    %div.col-sm-10
+      = @user.email
+
+= link_to 'Edit', edit_admin_user_path(@user)
+\|
+= link_to 'Back', admin_users_path

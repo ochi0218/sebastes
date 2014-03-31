@@ -1,4 +1,7 @@
-class ProvideUsersController < ApplicationController
+#
+# 業者アカウントコントローラ。
+#
+class Admin::ProvideUsersController < Admin::ApplicationController
   before_action :set_provide_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!
 
@@ -29,7 +32,7 @@ class ProvideUsersController < ApplicationController
 
     respond_to do |format|
       if @provide_user.save
-        format.html { redirect_to @provide_user, notice: 'Provide user was successfully created.' }
+        format.html { redirect_to [:admin, @provide_user], notice: 'Provide user was successfully created.' }
         format.json { render action: 'show', status: :created, location: @provide_user }
       else
         format.html { render action: 'new' }
@@ -57,7 +60,7 @@ class ProvideUsersController < ApplicationController
   def destroy
     @provide_user.destroy
     respond_to do |format|
-      format.html { redirect_to provide_users_url }
+      format.html { redirect_to admin_provide_users_url }
       format.json { head :no_content }
     end
   end

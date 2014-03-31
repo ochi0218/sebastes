@@ -1,4 +1,7 @@
-class CouponsController < ApplicationController
+#
+# クーポンコントローラ
+#
+class Admin::CouponsController < Admin::ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!
 
@@ -29,7 +32,7 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully created.' }
+        format.html { redirect_to [:admin, @coupon], notice: 'Coupon was successfully created.' }
         format.json { render action: 'show', status: :created, location: @coupon }
       else
         format.html { render action: 'new' }
@@ -43,7 +46,7 @@ class CouponsController < ApplicationController
   def update
     respond_to do |format|
       if @coupon.update(coupon_params)
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to [:admin, @coupon], notice: 'Coupon was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +60,7 @@ class CouponsController < ApplicationController
   def destroy
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to coupons_url }
+      format.html { redirect_to admin_coupons_url }
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,5 @@
+- @page_title = t('helpers.titles.show', { model: ProvideUser.model_name.human })
+
 %div.show
   %div.row
     %div.col-sm-2
@@ -10,6 +12,6 @@
     %div.col-sm-10
       = @provide_user.provider_name
 
-= link_to 'Edit', edit_provide_user_path(@provide_user)
+= link_to 'Edit', edit_admin_provide_user_path(@provide_user)
 \|
-= link_to 'Back', provide_users_path
+= link_to 'Back', admin_provide_users_path

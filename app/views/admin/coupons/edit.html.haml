@@ -1,0 +1,7 @@
+- @page_title = t('helpers.titles.edit', { model: Coupon.model_name.human })
+
+= render 'form'
+
+= link_to 'Show', [:admin, @coupon]
+\|
+= link_to 'Back', admin_coupons_path
