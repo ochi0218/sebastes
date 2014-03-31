@@ -5,7 +5,7 @@
   %span.pull-right= t('views.page_info.records', offset: @users.offset_value+1, limit: (@users.offset_value + @users.length), total: @users.total_count)
   %span.clearfix
 
-%table
+%table.table.table-striped.table-hover
   %tr
     %th= User.human_attribute_name(:email)
     %th
