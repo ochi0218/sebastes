@@ -8,7 +8,7 @@ class Admin::ProvideUsersController < Admin::ApplicationController
   # GET /provide_users
   # GET /provide_users.json
   def index
-    @provide_users = ProvideUser.all
+    @provide_users = ProvideUser.page
   end
 
   # GET /provide_users/1

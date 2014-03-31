@@ -8,7 +8,7 @@ class Admin::CouponsController < Admin::ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    @coupons = Coupon.page
   end
 
   # GET /coupons/1

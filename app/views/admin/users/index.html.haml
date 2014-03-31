@@ -1,5 +1,10 @@
 - @page_title = t('helpers.titles.list', { model: User.model_name.human })
 
+%p
+  %span.pull-left= t('views.page_info.page', current: @users.current_page, total: @users.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @users.offset_value+1, limit: (@users.offset_value + @users.length), total: @users.total_count)
+  %span.clearfix
+
 %table
   %tr
     %th= User.human_attribute_name(:email)
@@ -13,6 +18,8 @@
       %td= link_to 'Show', [:admin, user]
       %td= link_to 'Edit', edit_admin_user_path(user)
       %td= link_to 'Destroy', [:admin, user], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= paginate @users
 
 %br
 

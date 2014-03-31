@@ -8,7 +8,7 @@ class Admin::ItemsController < Admin::ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.page
   end
 
   # GET /items/1

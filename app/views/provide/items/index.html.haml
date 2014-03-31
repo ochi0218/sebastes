@@ -1,5 +1,10 @@
 - @page_title = t('helpers.titles.list', { model: Item.model_name.human })
 
+%p
+  %span.pull-left= t('views.page_info.page', current: @items.current_page, total: @items.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @items.offset_value+1, limit: (@items.offset_value + @items.length), total: @items.total_count)
+  %span.clearfix
+
 %table.table.table-striped.table-hover
   %tr
     %th= Item.human_attribute_name(:name)
@@ -21,4 +26,6 @@
       %td= item.stock
       %td= link_to 'Show', [:provide, item]
       %td= link_to 'Edit', edit_provide_item_path(item)
+
+= paginate @items
 

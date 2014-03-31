@@ -6,7 +6,7 @@ class Provide::ItemsController < Provide::ApplicationController
   before_action :authenticate_provide_user!
 
   def index
-    @items = Item.all
+    @items = Item.page
   end
 
   def show
