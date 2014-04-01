@@ -14,10 +14,10 @@
           %ul.nav.navbar-nav.navbar-right
             - if admin_user_signed_in?
               %li
-                = link_to t('top_nav.titles.logout'), destroy_admin_user_session_path, method: :delete
+                = link_to t('helpers.actions.logout'), destroy_admin_user_session_path, method: :delete
             - else
               %li
-                = link_to t('top_nav.titles.login'), new_admin_user_session_path
+                = link_to t('helpers.actions.login'), new_admin_user_session_path
     .cotainer-fluid
       .row.contents-wrapper
         #sideber.col-sm-3.col-md-2.sidebar

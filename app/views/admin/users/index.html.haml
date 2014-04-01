@@ -8,19 +8,27 @@
 %table.table.table-striped.table-hover
   %tr
     %th= User.human_attribute_name(:email)
-    %th
-    %th
-    %th
+    %th.action-col
+    %th.action-col
+    %th.action-col
 
   - @users.each do |user|
     %tr
       %td= user.email
-      %td= link_to 'Show', [:admin, user]
-      %td= link_to 'Edit', edit_admin_user_path(user)
-      %td= link_to 'Destroy', [:admin, user], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.action-col= link_to t('helpers.actions.show'), [:admin, user], class: 'btn btn-default btn-xs'
+      %td.action-col
+        = link_to edit_admin_user_path(user), class: 'btn btn-default btn-xs' do
+          %i.glyphicon.glyphicon-edit
+          = t('helpers.actions.edit')
+      %td.action-col
+        = link_to [:admin, user], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-xs btn-white' do
+          %i.glyphicon.glyphicon-trash
+          = t('helpers.actions.destroy')
 
 = paginate @users
 
 %br
 
-= link_to 'New User', new_admin_user_path
+= link_to new_admin_user_path, class: 'btn btn-primary btn-white' do
+  %i.glyphicon.glyphicon-plus
+  = t('helpers.titles.new', { model: User.model_name.human })

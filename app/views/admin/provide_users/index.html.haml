@@ -9,20 +9,28 @@
   %tr
     %th= ProvideUser.human_attribute_name(:email)
     %th= ProvideUser.human_attribute_name(:provider_name)
-    %th
-    %th
-    %th
+    %th.action-col
+    %th.action-col
+    %th.action-col
 
   - @provide_users.each do |provide_user|
     %tr
       %td= provide_user.email
       %td= provide_user.provider_name
-      %td= link_to 'Show', [:admin, provide_user]
-      %td= link_to 'Edit', edit_admin_provide_user_path(provide_user)
-      %td= link_to 'Destroy', [:admin, provide_user], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.action-col= link_to t('helpers.actions.show'), [:admin, provide_user], class: 'btn btn-default btn-xs'
+      %td.action-col
+        = link_to edit_admin_provide_user_path(provide_user), class: 'btn btn-default btn-xs' do
+          %i.glyphicon.glyphicon-edit
+          = t('helpers.actions.edit')
+      %td.action-col
+        = link_to [:admin, provide_user], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-xs btn-white' do
+          %i.glyphicon.glyphicon-trash
+          = t('helpers.actions.destroy')
 
 = paginate @provide_users
 
 %br
 
-= link_to 'New Provide user', new_admin_provide_user_path
+= link_to new_admin_provide_user_path, class: 'btn btn-primary btn-white' do
+  %i.glyphicon.glyphicon-plus
+  = t('helpers.titles.new', { model: ProvideUser.model_name.human })

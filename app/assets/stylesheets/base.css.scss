@@ -76,3 +76,11 @@
         margin-bottom: 15px;
     }
 }
+
+table.table {
+    border-bottom: 1px solid #dddddd;
+
+    td.action-col, th.action-col {
+        width: 40px;
+    }
+}
