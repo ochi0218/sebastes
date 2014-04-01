@@ -1,6 +1,6 @@
 Sebastes::Application.routes.draw do
-  devise_for :provide_users
-  devise_for :admin_users
+  devise_for :provide_users, controllers: { sessions: 'provide/sessions' }
+  devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
   get "home/index"
