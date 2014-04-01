@@ -19,7 +19,7 @@
               %li
                 = link_to t('top_nav.titles.login'), new_provide_user_session_path
     .cotainer-fluid
-      .row
+      .row.contents-wrapper
         #sideber.col-sm-3.col-md-2.sidebar
           %ul.nav.nav-sidebar
             %li{ class: controller.controller_name == 'items' ? 'active' : ''} #{link_to(Item.model_name.human, provide_items_path)}
