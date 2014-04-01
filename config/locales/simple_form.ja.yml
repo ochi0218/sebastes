@@ -31,10 +31,12 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         provider_name: '業者名'
+        remember_me: 'ログインしたままにする'
       admin_user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+        remember_me: 'ログインしたままにする'
       coupon:
         code: 'クーポンコード'
         point: 'ポイント'
