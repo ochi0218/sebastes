@@ -11,14 +11,19 @@
       %b= Coupon.human_attribute_name(:point)
     %div.col-sm-10
       = @coupon.point
-  %div.row
-    %div.col-sm-2
-      %b= Coupon.human_attribute_name(:used)
-    %div.col-sm-10
-      = @coupon.used
-  %div.row
-    %div.col-sm-2
-      %b= Coupon.human_attribute_name(:used_datetime)
-    %div.col-sm-10
-      = @coupon.used_datetime
+
+  .panel.panel-default
+    .panel-heading= t('.coupon_log')
+
+    - if @coupon.coupon_log.nil?
+      .panel-body
+        %p= t('.nolog_message')
+    - else
+      %table.table.table-stripe
+        %tr
+          %th= CouponLog.human_attribute_name(:user_id)
+          %th= CouponLog.human_attribute_name(:used_datetime)
+        %tr
+          %td= @coupon.coupon_log.user.email
+          %td= @coupon.coupon_log.used_datetime
 

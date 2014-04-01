@@ -73,6 +73,6 @@ class Admin::CouponsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
-      params.require(:coupon).permit(:code, :point, :used, :used_datetime)
+      params.require(:coupon).permit(:code, :point)
     end
 end

@@ -231,6 +231,7 @@ ja:
       user: 'ユーザ'
       provide_user: '業者アカウント'
       coupon: 'クーポン'
+      coupon_log: 'クーポン利用履歴'
     attributes:
       item:
         name: '商品名'
@@ -254,7 +255,8 @@ ja:
       coupon:
         code: 'クーポンコード'
         point: 'ポイント'
-        used: 'クーポン利用'
+      coupon_log:
+        user_id: 'クーポン利用者'
         used_datetime: 'クーポン利用日'
     errors:
       <<: *errors
@@ -268,5 +270,10 @@ ja:
     page_info:
       page: "ページ %{current} / %{total}"
       records: "%{total}件中 %{offset}〜%{limit}件を表示しています"
-  site_title: さくらマーケット
+  site_title: 'さくらマーケット'
+  admin:
+    coupons:
+      show:
+        coupon_log: '利用履歴'
+        nolog_message: '利用履歴はありません。'
 

@@ -9,8 +9,6 @@
   %tr
     %th= Coupon.human_attribute_name(:code)
     %th= Coupon.human_attribute_name(:point)
-    %th= Coupon.human_attribute_name(:used)
-    %th= Coupon.human_attribute_name(:used_datetime)
     %th.action-col
     %th.action-col
     %th.action-col
@@ -19,8 +17,6 @@
     %tr
       %td= coupon.code
       %td= coupon.point
-      %td= coupon.used
-      %td= coupon.used_datetime
       %td.action-col= link_to t('helpers.actions.show'), [:admin, coupon], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_admin_coupon_path(coupon), class: 'btn btn-default btn-xs' do
