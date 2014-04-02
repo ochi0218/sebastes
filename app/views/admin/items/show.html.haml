@@ -15,20 +15,20 @@
     %div.col-sm-2
       %b= Item.human_attribute_name(:price)
     %div.col-sm-10
-      = @item.price
+      = number_to_currency @item.price
   %div.row
     %div.col-sm-2
       %b= Item.human_attribute_name(:description)
     %div.col-sm-10
-      = @item.description
+      = simple_format(@item.description)
   %div.row
     %div.col-sm-2
       %b= Item.human_attribute_name(:display_flag)
     %div.col-sm-10
-      = @item.display_flag
+      = boolean_to_human(@item.display_flag)
   %div.row
     %div.col-sm-2
       %b= Item.human_attribute_name(:stock)
     %div.col-sm-10
-      = @item.stock
+      = number_to_human(@item.stock, units: 'number.human.stock_units.units' )
 

@@ -15,8 +15,8 @@
 
   - @coupons.each do |coupon|
     %tr
-      %td= coupon.code
-      %td= coupon.point
+      %td= coupon_code_to_human(coupon.code)
+      %td= number_to_human(coupon.point, units: 'number.human.point_units.units')
       %td.action-col= link_to t('helpers.actions.show'), [:admin, coupon], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_admin_coupon_path(coupon), class: 'btn btn-default btn-xs' do

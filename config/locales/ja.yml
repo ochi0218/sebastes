@@ -156,6 +156,10 @@ ja:
       create: '登録する'
       submit: '保存する'
       update: '更新する'
+  boolean:
+    human:
+      yes_or_true: 'はい'
+      no_or_false: 'いいえ'
   number:
     currency:
       format:
@@ -195,13 +199,16 @@ ja:
           kb: キロバイト
           mb: メガバイト
           tb: テラバイト
-      fish_length:
-        billion: 十億
-        million: 百万
-        quadrillion: 千兆
-        thousand: 'm'
-        trillion: 兆
-        unit: 'cm'
+      stock_units:
+        format:
+          delimiter: ','
+        units:
+          unit: '個'
+      point_units:
+        format:
+          delimiter: ','
+        units:
+          unit: 'pt'
     percentage:
       format:
         delimiter: ''

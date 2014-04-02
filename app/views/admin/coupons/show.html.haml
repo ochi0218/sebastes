@@ -5,12 +5,12 @@
     %div.col-sm-2
       %b= Coupon.human_attribute_name(:code)
     %div.col-sm-10
-      = @coupon.code
+      = coupon_code_to_human(@coupon.code)
   %div.row
     %div.col-sm-2
       %b= Coupon.human_attribute_name(:point)
     %div.col-sm-10
-      = @coupon.point
+      = number_to_human(@coupon.point, units: 'number.human.point_units.units')
 
   .panel.panel-default
     .panel-heading= t('.coupon_log')
