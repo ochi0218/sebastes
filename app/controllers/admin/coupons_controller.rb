@@ -32,7 +32,7 @@ class Admin::CouponsController < Admin::ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to [:admin, @coupon], notice: 'Coupon was successfully created.' }
+        format.html { redirect_to [:admin, @coupon], notice: I18n.t('helpers.notice.success.create', { model: Coupon.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @coupon }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ class Admin::CouponsController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @coupon.update(coupon_params)
-        format.html { redirect_to [:admin, @coupon], notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to [:admin, @coupon], notice: I18n.t('helpers.notice.success.update', { model: Coupon.model_name.human }) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class Admin::CouponsController < Admin::ApplicationController
   rescue ActiveRecord::StaleObjectError
     respond_to do |format|
       format.html {
-        flash[:alert] = 'Coupon was updated another.'
+        flash[:alert] = I18n.t('helpers.alert.model_conflict')
         redirect_to action: 'edit'
       }
       format.json { render json: @item.errors, status: :conflict }
@@ -68,7 +68,7 @@ class Admin::CouponsController < Admin::ApplicationController
   def destroy
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to admin_coupons_url }
+      format.html { redirect_to admin_coupons_url, notice: I18n.t('helpers.notice.success.destroy', { model: Coupon.model_name.human }) }
       format.json { head :no_content }
     end
   end

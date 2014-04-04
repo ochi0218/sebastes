@@ -18,7 +18,7 @@ class Provide::ItemsController < Provide::ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to [:provide, @item], notice: 'Item was successfully updated.' }
+        format.html { redirect_to [:provide, @item], notice: I18n.t('helpers.notice.success.update', { model: Item.model_name.human }) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -28,7 +28,7 @@ class Provide::ItemsController < Provide::ApplicationController
   rescue ActiveRecord::StaleObjectError
     respond_to do |format|
       format.html {
-        flash[:alert] = 'Item was updated another.'
+        flash[:alert] = I18n.t('helpers.alert.model_conflict')
         redirect_to action: 'edit'
       }
       format.json { render json: @item.errors, status: :conflict }

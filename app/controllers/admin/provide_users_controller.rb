@@ -32,7 +32,7 @@ class Admin::ProvideUsersController < Admin::ApplicationController
 
     respond_to do |format|
       if @provide_user.save
-        format.html { redirect_to [:admin, @provide_user], notice: 'Provide user was successfully created.' }
+        format.html { redirect_to [:admin, @provide_user], notice: I18n.t('helpers.notice.success.create', { model: ProvideUser.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @provide_user }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ class Admin::ProvideUsersController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @provide_user.update(provide_user_params)
-        format.html { redirect_to [:admin, @provide_user], notice: 'Provide user was successfully updated.' }
+        format.html { redirect_to [:admin, @provide_user], notice: I18n.t('helpers.notice.success.update', { model: ProvideUser.model_name.human }) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +60,7 @@ class Admin::ProvideUsersController < Admin::ApplicationController
   def destroy
     @provide_user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_provide_users_url }
+      format.html { redirect_to admin_provide_users_url, notice: I18n.t('helpers.notice.success.destroy', { model: ProvideUser.model_name.human }) }
       format.json { head :no_content }
     end
   end

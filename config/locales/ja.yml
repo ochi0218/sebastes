@@ -142,6 +142,13 @@ ja:
       edit: '%{model} 編集'
       list: '%{model} 一覧'
       show: '%{model} 詳細'
+    notice:
+      success:
+        create: '%{model}を作成しました。'
+        update: '%{model}を更新しました。'
+        destroy: '%{model}を削除しました。'
+    alert:
+      model_conflict: '他のユーザによって更新されています。'
     confirm:
       delete: '削除しますか？'
     select:
