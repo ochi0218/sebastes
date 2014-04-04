@@ -19,10 +19,20 @@ ja:
     mailer:
       confirmation_instructions:
         subject: 'アカウントの登録方法'
+        hello: 'こんにちわ %{name}。'
+        description: '以下のリンクから登録を完了してください。'
+        regist_link: '登録を完了する'
       reset_password_instructions:
         subject: 'パスワードの再設定'
+        hello: 'こんにちは %{name}。'
+        description: 'パスワードの変更依頼を受け付けました。以下のリンクから変更できます。'
+        password_link: 'パスワード変更'
+        alert: '※送信した覚えがない場合は、このメールは無視してください。'
       unlock_instructions:
         subject: 'アカウントの凍結解除'
+        hello: 'こんにちわ %{name}。'
+        description: 'アカウントがロックされました。以下のリンクからロックを解除してください。'
+        unlock_link: 'ロックを解除する'
     omniauth_callbacks:
       success: '%{kind} アカウントによる個人認証に成功しました。'
       failure: '%{kind} アカウントによる個人認証に失敗しました（%{reason}）。'
