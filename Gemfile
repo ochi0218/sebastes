@@ -37,6 +37,7 @@ gem 'haml-rails'
 gem 'devise'
 
 # File uploader
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
 

@@ -80,6 +80,13 @@
 table.table {
     border-bottom: 1px solid #dddddd;
 
+    td {
+        vertical-align: middle !important;
+    }
+
+    td.thumb-image-col, th.thumb-image-col {
+        width: 60px;
+    }
     td.action-col, th.action-col {
         width: 40px;
     }

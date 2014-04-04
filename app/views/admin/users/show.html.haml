@@ -8,6 +8,12 @@
       = @user.email
   %div.row
     %div.col-sm-2
+      %b= User.human_attribute_name(:profile_image)
+    %div.col-sm-10
+      - if @user.profile_image.present?
+        = image_tag @user.profile_image
+  %div.row
+    %div.col-sm-2
       %b= User.human_attribute_name(:nick_name)
     %div.col-sm-10
       = @user.nick_name

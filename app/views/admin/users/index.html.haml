@@ -7,6 +7,7 @@
 
 %table.table.table-striped.table-hover
   %tr
+    %th.thumb-image-col
     %th= User.human_attribute_name(:email)
     %th= User.human_attribute_name(:nick_name)
     %th.action-col
@@ -15,6 +16,10 @@
 
   - @users.each do |user|
     %tr
+      - if user.profile_image.present?
+        %td.thumb-image-col= image_tag user.profile_image.thumb
+      - else
+        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
       %td= user.email
       %td= user.nick_name
       %td.action-col= link_to t('helpers.actions.show'), [:admin, user], class: 'btn btn-default btn-xs'
