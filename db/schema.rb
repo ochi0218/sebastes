@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140401154730) do
     t.datetime "used_datetime"
     t.integer  "coupon_id"
     t.integer  "user_id"
+    t.integer  "lock_version",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140401154730) do
   create_table "coupons", force: true do |t|
     t.string   "code"
     t.integer  "point"
+    t.integer  "lock_version", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140401154730) do
     t.boolean  "display_flag"
     t.integer  "sort_no"
     t.integer  "stock",        default: 0
+    t.integer  "lock_version", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

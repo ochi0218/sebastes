@@ -53,6 +53,14 @@ class Admin::CouponsController < Admin::ApplicationController
         format.json { render json: @coupon.errors, status: :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::StaleObjectError
+    respond_to do |format|
+      format.html {
+        flash[:alert] = 'Coupon was updated another.'
+        redirect_to action: 'edit'
+      }
+      format.json { render json: @item.errors, status: :conflict }
+    end
   end
 
   # DELETE /coupons/1

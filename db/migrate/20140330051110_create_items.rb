@@ -8,7 +8,8 @@ class CreateItems < ActiveRecord::Migration
       t.boolean :display_flag
       t.integer :sort_no
       t.integer :stock, default: 0
-
+      
+      t.integer :lock_version, default: 0
       t.timestamps
     end
   end

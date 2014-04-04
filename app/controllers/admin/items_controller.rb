@@ -53,6 +53,14 @@ class Admin::ItemsController < Admin::ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::StaleObjectError
+    respond_to do |format|
+      format.html {
+        flash[:alert] = 'Item was updated another.'
+        redirect_to action: 'edit'
+      }
+      format.json { render json: @item.errors, status: :conflict }
+    end
   end
 
   # DELETE /items/1
@@ -73,6 +81,6 @@ class Admin::ItemsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :image, :price, :description, :display_flag, :sort_no)
+      params.require(:item).permit(:name, :image, :price, :description, :display_flag, :sort_no, :lock_version)
     end
 end

@@ -46,7 +46,7 @@ class Admin::ProvideUsersController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @provide_user.update(provide_user_params)
-        format.html { redirect_to @provide_user, notice: 'Provide user was successfully updated.' }
+        format.html { redirect_to [:admin, @provide_user], notice: 'Provide user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

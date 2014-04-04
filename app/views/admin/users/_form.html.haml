@@ -3,8 +3,8 @@
     = notification
 
   = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
+  = f.input :password, disabled: disabled_password
+  = f.input :password_confirmation, disabled: disabled_password
 
   .form-actions
     = f.button :submit, class: 'btn-primary'
