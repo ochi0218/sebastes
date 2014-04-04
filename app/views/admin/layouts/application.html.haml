@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title #{t('site_title')}
+    %title #{t('site_titles.admin')}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -9,9 +9,11 @@
     %header#header.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
-          = link_to t('site_title'), root_path, class: 'navbar-brand'
+          = link_to t('site_titles.admin'), admin_root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to t('site_titles.user'), root_path
             - if admin_user_signed_in?
               %li
                 = link_to t('helpers.actions.logout'), destroy_admin_user_session_path, method: :delete

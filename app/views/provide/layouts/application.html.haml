@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title #{t('site_title')}
+    %title #{t('site_titles.provide')}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -9,15 +9,17 @@
     %header#header.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
-          = link_to t('site_title'), root_path, class: 'navbar-brand'
+          = link_to t('site_titles.provide'), provide_root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to t('site_titles.user'), root_path
             - if provide_user_signed_in?
               %li
-                = link_to t('top_nav.titles.logout'), destroy_provide_user_session_path, method: :delete
+                = link_to t('helpers.actions.logout'), destroy_provide_user_session_path, method: :delete
             - else
               %li
-                = link_to t('top_nav.titles.login'), new_provide_user_session_path
+                = link_to t('helpers.actions.login'), new_provide_user_session_path
     .cotainer-fluid
       .row.contents-wrapper
         #sideber.col-sm-3.col-md-2.sidebar

@@ -289,7 +289,10 @@ ja:
     page_info:
       page: "ページ %{current} / %{total}"
       records: "%{total}件中 %{offset}〜%{limit}件を表示しています"
-  site_title: 'さくらマーケット'
+  site_titles:
+    user: 'さくらマーケット'
+    admin: 'さくらマーケット(管理者)'
+    provide: 'さくらマーケット(業者)'
   admin:
     coupons:
       show:
