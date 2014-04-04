@@ -298,4 +298,11 @@ ja:
       show:
         coupon_log: '利用履歴'
         nolog_message: '利用履歴はありません。'
+  mailer:
+    provide_user_notifier:
+      login_info:
+        subject: 'ログイン情報'
+        hello: 'こんにちはわ %{name}'
+        description: 'アカウントの登録が完了しました。以下のリンクからログインしてください。'
+        login_link: 'ログインする'
 

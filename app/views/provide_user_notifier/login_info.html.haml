@@ -1,0 +1,13 @@
+%p= t('.hello', name: @provide_user.provider_name)
+%p= t('.description')
+%br
+%p
+  = ProvideUser.human_attribute_name(:email)
+  %span  : 
+  = @provide_user.email
+%p
+  = ProvideUser.human_attribute_name(:password)
+  %span  : 
+  = @provide_user.password
+%p= link_to t('.login_link'), new_provide_user_session_path
+

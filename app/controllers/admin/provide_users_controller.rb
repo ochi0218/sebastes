@@ -32,6 +32,8 @@ class Admin::ProvideUsersController < Admin::ApplicationController
 
     respond_to do |format|
       if @provide_user.save
+        ProvideUserNotifier.login_info(@provide_user).deliver
+
         format.html { redirect_to [:admin, @provide_user], notice: I18n.t('helpers.notice.success.create', { model: ProvideUser.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @provide_user }
       else
