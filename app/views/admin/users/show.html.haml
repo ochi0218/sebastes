@@ -6,4 +6,24 @@
       %b= User.human_attribute_name(:email)
     %div.col-sm-10
       = @user.email
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:nick_name)
+    %div.col-sm-10
+      = @user.nick_name
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:destination_name)
+    %div.col-sm-10
+      = @user.destination_name
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:destination_zip_code)
+    %div.col-sm-10
+      = @user.destination_zip_code
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:destination_address)
+    %div.col-sm-10
+      = simple_format(@user.destination_address)
 

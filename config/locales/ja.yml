@@ -261,6 +261,11 @@ ja:
         password_confirmation: 'パスワード確認'
         remember_me: 'ログインしたままにする'
         current_password: '現在パスワード'
+        nick_name: 'ニックネーム'
+        profile_image: 'プロフィール画像'
+        destination_zip_code: '送付先(郵便番号)'
+        destination_address: '送付先(住所)'
+        destination_name: '送付先(名前)'
       provide_user:
         email: 'メールアドレス'
         password: 'パスワード'

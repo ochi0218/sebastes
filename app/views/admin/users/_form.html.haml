@@ -5,6 +5,10 @@
   = f.input :email
   = f.input :password, disabled: disabled_password
   = f.input :password_confirmation, disabled: disabled_password
+  = f.input :nick_name
+  = f.input :destination_name
+  = f.input :destination_zip_code
+  = f.input :destination_address
 
   .form-actions
     = f.button :submit, class: 'btn-primary'

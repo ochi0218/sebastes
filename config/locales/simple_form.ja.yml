@@ -10,6 +10,8 @@ ja:
     hints:
       coupon:
         code: '英数字12桁で登録してください。'
+      user:
+        destination_zip_code: 'ハイフン(-)付きの形式で入力してください。例) 160-0001'
     placeholders:
     labels:
       item:
@@ -37,6 +39,11 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         remember_me: 'ログインしたままにする'
+        nick_name: 'ニックネーム'
+        profile_image: 'プロフィール画像'
+        destination_zip_code: '送付先(郵便番号)'
+        destination_address: '送付先(住所)'
+        destination_name: '送付先(名前)'
       coupon:
         code: 'クーポンコード'
         point: 'ポイント'
