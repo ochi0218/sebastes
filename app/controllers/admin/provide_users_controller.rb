@@ -53,6 +53,14 @@ class Admin::ProvideUsersController < Admin::ApplicationController
         format.json { render json: @provide_user.errors, status: :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::StaleObjectError
+    respond_to do |format|
+      format.html {
+        flash[:alert] = I18n.t('helpers.alert.model_conflict')
+        redirect_to action: 'edit'
+      }
+      format.json { render json: @provide_user.errors, status: :conflict }
+    end
   end
 
   # DELETE /provide_users/1
@@ -73,6 +81,6 @@ class Admin::ProvideUsersController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def provide_user_params
-      params[:provide_user].permit(:email, :password, :password_confirmation, :provider_name)
+      params[:provide_user].permit(:email, :password, :password_confirmation, :provider_name, :lock_version)
     end
 end
