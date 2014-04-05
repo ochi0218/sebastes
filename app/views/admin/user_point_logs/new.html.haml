@@ -1,0 +1,11 @@
+- @page_title = t('helpers.titles.edit', { model: UserPointLog.model_name.human })
+
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:point)
+    %div.col-sm-10
+      = number_to_human(@user.point, units: 'number.human.point_units.units')
+
+= render 'form'
+

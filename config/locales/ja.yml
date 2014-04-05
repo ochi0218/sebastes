@@ -130,6 +130,7 @@ ja:
       carrierwave_download_error: はダウンロードできません
       extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
       extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
+      negative_number_of_change_point: 'ポイント変動後の値を0以上になる値にしてください。'
     template:
       body: '次の項目を確認してください。'
       header:
@@ -244,6 +245,7 @@ ja:
     models:
       item: '商品'
       user: 'ユーザ'
+      user_point_log: 'ポイント履歴'
       provide_user: '業者アカウント'
       coupon: 'クーポン'
       coupon_log: 'クーポン利用履歴'
@@ -267,6 +269,14 @@ ja:
         destination_zip_code: '送付先(郵便番号)'
         destination_address: '送付先(住所)'
         destination_name: '送付先(名前)'
+        point: 'ポイント'
+      user_point_log:
+        user_id: '対象ユーザ'
+        log_date: '日時'
+        kind: '種別'
+        change_point: '変動ポイント'
+        before_point: '前回ポイント'
+        description: '説明'
       provide_user:
         email: 'メールアドレス'
         password: 'パスワード'
@@ -300,11 +310,6 @@ ja:
         coupon_log: '利用履歴'
         nolog_message: '利用履歴はありません。'
         user_already_destroy: '削除されたユーザです。'
-  mailer:
-    provide_user_notifier:
-      login_info:
-        subject: 'ログイン情報'
-        hello: 'こんにちはわ %{name}'
-        description: 'アカウントの登録が完了しました。以下のリンクからログインしてください。'
-        login_link: 'ログインする'
-
+    users:
+      index:
+        point_edit_button: 'ポイント増減'

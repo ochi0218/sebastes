@@ -34,4 +34,9 @@
       %b= User.human_attribute_name(:destination_address)
     %div.col-sm-10
       = simple_format(@user.destination_address)
+  %div.row
+    %div.col-sm-2
+      %b= User.human_attribute_name(:point)
+    %div.col-sm-10
+      = number_to_human(@user.point, units: 'number.human.point_units.units')
 

@@ -41,6 +41,9 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
 
+# Enum
+gem 'enumerize'
+
 group :development do
   gem 'erb2haml'
 end

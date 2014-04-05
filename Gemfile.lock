@@ -51,6 +51,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    enumerize (0.8.0)
+      activesupport (>= 3.2)
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
@@ -176,6 +178,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
+  enumerize
   erb2haml
   fog
   haml-rails

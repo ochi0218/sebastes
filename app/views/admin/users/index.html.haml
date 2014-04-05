@@ -10,6 +10,8 @@
     %th.thumb-image-col
     %th= User.human_attribute_name(:email)
     %th= User.human_attribute_name(:nick_name)
+    %th= User.human_attribute_name(:point)
+    %th.action-col
     %th.action-col
     %th.action-col
     %th.action-col
@@ -22,11 +24,16 @@
         %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
       %td= user.email
       %td= user.nick_name
+      %td= number_to_human(user.point, units: 'number.human.point_units.units')
       %td.action-col= link_to t('helpers.actions.show'), [:admin, user], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_admin_user_path(user), class: 'btn btn-default btn-xs' do
           %i.glyphicon.glyphicon-edit
           = t('helpers.actions.edit')
+      %td.action-col
+        = link_to admin_user_point_logs_path(user), class: 'btn btn-default btn-xs' do
+          %i.glyphicon.glyphicon-bell
+          = t('.point_edit_button')
       %td.action-col
         = link_to [:admin, user], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-xs btn-white' do
           %i.glyphicon.glyphicon-trash

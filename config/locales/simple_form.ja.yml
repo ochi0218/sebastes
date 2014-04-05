@@ -28,6 +28,14 @@ ja:
         password_confirmation: 'パスワード確認'
         remember_me: 'ログインしたままにする'
         current_password: '現在パスワード'
+        point: 'ポイント'
+      user_point_log:
+        user_id: '対象ユーザ'
+        log_date: '日時'
+        kind: '種別'
+        change_point: '変動ポイント'
+        before_point: '前回ポイント'
+        description: '説明'
       provide_user:
         email: 'メールアドレス'
         password: 'パスワード'

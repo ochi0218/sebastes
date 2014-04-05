@@ -11,6 +11,8 @@ Sebastes::Application.routes.draw do
     resources :items
     resources :users
     resources :provide_users
+    get 'users/:id/point' => 'user_point_logs#new', as: :user_point_logs
+    post 'users/:id/point' => 'user_point_logs#create', as: :new_user_point_logs
   end
 
   namespace :provide do

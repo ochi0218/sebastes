@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  log_date: 2014-04-05 20:46:02
+  kind: 1
+  change_point: 1
+  before_point: 1
+  description: MyText
+
+two:
+  log_date: 2014-04-05 20:46:02
+  kind: 1
+  change_point: 1
+  before_point: 1
+  description: MyText
