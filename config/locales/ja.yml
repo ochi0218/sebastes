@@ -314,3 +314,6 @@ ja:
     users:
       index:
         point_edit_button: 'ポイント増減'
+    user_point_logs:
+      new:
+        current_point: '現在ポイント'

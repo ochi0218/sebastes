@@ -1,7 +1,8 @@
 - @page_title = t('helpers.titles.edit', { model: UserPointLog.model_name.human })
 
-%div.show
-  %div.row
+.panel.panel-default
+  .panel-heading= t('.current_point')
+  .panel-body
     %div.col-sm-2
       %b= User.human_attribute_name(:point)
     %div.col-sm-10
