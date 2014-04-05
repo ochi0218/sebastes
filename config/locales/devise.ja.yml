@@ -47,8 +47,15 @@ ja:
       updated_not_active: 'パスワードが正しく変更されました。'
     registrations:
       new:
-        title: 'ユーザ登録'
+        title: 'ユーザ 登録'
         submit_button: '登録'
+      edit:
+        title: 'ユーザ情報 変更'
+        submit_button: '更新'
+        destroy_title: 'ユーザ情報削除'
+        destroy_link: 'ユーザ情報を削除'
+        destroy_confirm: 'ユーザ情報を削除します。本サービスで利用していた情報はすべて削除されますがよろしいですか？'
+        wait_confirmation_message: '確認メールを送信しましたので、次のメールアドレスから届くのをお待ちください。'
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
       signed_up: 'ようこそ！ アカウント登録を受け付けました。'
       signed_up_but_inactive: 'アカウント登録を受け付けました。しかしまだ有効化されておらず、ログインできません。'

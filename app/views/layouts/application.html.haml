@@ -20,6 +20,8 @@
                 = link_to t('site_titles.provide'), provide_root_path
             - if user_signed_in?
               %li
+                = link_to t('helpers.actions.change_user_info'), edit_user_registration_path
+              %li
                 = link_to t('helpers.actions.logout'), destroy_user_session_path, method: :delete
             - else
               %li

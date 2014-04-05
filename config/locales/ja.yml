@@ -161,6 +161,7 @@ ja:
       login: 'ログイン'
       logout: 'ログアウト'
       signup: 'ユーザ登録'
+      change_user_info: 'ユーザ情報変更'
     submit:
       create: '登録する'
       submit: '保存する'

@@ -1,18 +1,25 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, :required => true, :autofocus => true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-    = f.input :password_confirmation, :required => false
-    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+- @page_title = t('.title')
+
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal col-sm-10' } do |f|
+  - if notification = f.error_notification
+    = notification
+    
+  = f.input :email, required: true, utofocus: true
+  - if devise_mapping.confirmable? and resource.pending_reconfirmation?
+    %p
+      = t('.wait_confirmation_message') 
+      %span : rsource.unconfirmed_email
+  = f.input :password, autocomplete: 'off', required: false
+  = f.input :password_confirmation, required: false
+  = f.input :current_password, required: true
   .form-actions
-    = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-= link_to "Back", :back
+    = f.button :submit, t('.submit_button'), class: 'btn btn-lg btn-primary btn-block'
+
+%span.clearfix
+%br
+
+.col-sm-10
+  %h2= t('.destroy_title')
+  %hr
+    = link_to t('.destroy_link'), registration_path(resource_name), data: { confirm: t('.destroy_confirm') }, method: :delete, class: 'btn btn-lg btn-danger btn-block btn-white'
+
