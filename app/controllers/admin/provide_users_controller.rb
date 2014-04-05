@@ -32,8 +32,6 @@ class Admin::ProvideUsersController < Admin::ApplicationController
 
     respond_to do |format|
       if @provide_user.save
-        ProvideUserNotifier.login_info(@provide_user).deliver
-
         format.html { redirect_to [:admin, @provide_user], notice: I18n.t('helpers.notice.success.create', { model: ProvideUser.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @provide_user }
       else
@@ -54,14 +52,6 @@ class Admin::ProvideUsersController < Admin::ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @provide_user.errors, status: :unprocessable_entity }
       end
-    end
-  rescue ActiveRecord::StaleObjectError
-    respond_to do |format|
-      format.html {
-        flash[:alert] = I18n.t('helpers.alert.model_conflict')
-        redirect_to action: 'edit'
-      }
-      format.json { render json: @provide_user.errors, status: :conflict }
     end
   end
 

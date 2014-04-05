@@ -299,6 +299,7 @@ ja:
       show:
         coupon_log: '利用履歴'
         nolog_message: '利用履歴はありません。'
+        user_already_destroy: '削除されたユーザです。'
   mailer:
     provide_user_notifier:
       login_info:

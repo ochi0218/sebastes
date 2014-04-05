@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404140137) do
+ActiveRecord::Schema.define(version: 20140404013838) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140404140137) do
   create_table "coupons", force: true do |t|
     t.string   "code"
     t.integer  "point"
-    t.integer  "lock_version", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +74,6 @@ ActiveRecord::Schema.define(version: 20140404140137) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider_name"
-    t.integer  "lock_version"
   end
 
   add_index "provide_users", ["email"], name: "index_provide_users_on_email", unique: true
@@ -99,7 +97,6 @@ ActiveRecord::Schema.define(version: 20140404140137) do
     t.string   "destination_zip_code"
     t.text     "destination_address"
     t.string   "destination_name"
-    t.integer  "lock_version"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -53,14 +53,6 @@ class Admin::UsersController < Admin::ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  rescue ActiveRecord::StaleObjectError
-    respond_to do |format|
-      format.html {
-        flash[:alert] = I18n.t('helpers.alert.model_conflict')
-        redirect_to action: 'edit'
-      }
-      format.json { render json: @user.errors, status: :conflict }
-    end
   end
 
   # DELETE /users/1

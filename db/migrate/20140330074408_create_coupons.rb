@@ -4,7 +4,6 @@ class CreateCoupons < ActiveRecord::Migration
       t.string :code
       t.integer :point
 
-      t.integer :lock_version, default: 0
       t.timestamps
     end
   end

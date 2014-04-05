@@ -24,6 +24,9 @@
           %th= CouponLog.human_attribute_name(:user_id)
           %th= CouponLog.human_attribute_name(:used_datetime)
         %tr
-          %td= @coupon.coupon_log.user.email
+          - if @coupon.coupon_log.user.nil?
+            %td= t('.user_already_destroy')
+          - else
+            %td= @coupon.coupon_log.user.nick_name(@coupon.coupon_log.user.email)
           %td= @coupon.coupon_log.used_datetime
 
