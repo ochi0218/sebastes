@@ -43,6 +43,6 @@ class Provide::ItemsController < Provide::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :image, :price, :description, :display_flag, :sort_no)
+      params.require(:item).permit(:stock)
     end
 end

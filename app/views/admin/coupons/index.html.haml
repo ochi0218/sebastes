@@ -16,6 +16,7 @@
   %tr
     %th= Coupon.human_attribute_name(:code)
     %th= Coupon.human_attribute_name(:point)
+    %th= t('.coupon_log')
     %th.action-col
     %th.action-col
     %th.action-col
@@ -24,6 +25,7 @@
     %tr
       %td= coupon_code_to_human(coupon.code)
       %td= number_to_human(coupon.point, units: 'number.human.point_units.units')
+      %td= boolean_to_human(coupon.coupon_log.present?)
       %td.action-col= link_to t('helpers.actions.show'), [:admin, coupon], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_admin_coupon_path(coupon), class: 'btn btn-default btn-xs' do

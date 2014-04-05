@@ -7,10 +7,9 @@
 
 %table.table.table-striped.table-hover
   %tr
+    %th.thumb-image-col
     %th= Item.human_attribute_name(:name)
-    %th= Item.human_attribute_name(:image)
     %th= Item.human_attribute_name(:price)
-    %th= Item.human_attribute_name(:description)
     %th= Item.human_attribute_name(:display_flag)
     %th= Item.human_attribute_name(:stock)
     %th.action-col
@@ -18,12 +17,14 @@
 
   - @items.each do |item|
     %tr
+      - if item.image.present?
+        %td.thmb-image-col= image_tag item.image.thumb
+      - else
+        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
       %td= item.name
-      %td= item.image
-      %td= item.price
-      %td= item.description
-      %td= item.display_flag
-      %td= item.stock
+      %td= number_to_currency item.price
+      %td= boolean_to_human(item.display_flag)
+      %td= number_to_human(item.stock, units: 'number.human.stock_units.units' )
       %td.action-col= link_to t('helpers.actions.show'), [:provide, item], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_provide_item_path(item), class: 'btn btn-default btn-xs' do
