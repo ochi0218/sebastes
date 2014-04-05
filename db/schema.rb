@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20140405114602) do
     t.datetime "used_datetime"
     t.integer  "coupon_id"
     t.integer  "user_id"
-    t.integer  "lock_version",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
