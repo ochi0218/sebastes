@@ -1,5 +1,12 @@
 - @page_title = t('helpers.titles.list', { model: ProvideUser.model_name.human })
 
+%div
+  = link_to new_admin_provide_user_path, class: 'btn btn-primary btn-white' do
+    %i.glyphicon.glyphicon-plus
+    = t('helpers.titles.new', { model: ProvideUser.model_name.human })
+
+%br
+
 %p
   %span.pull-left= t('views.page_info.page', current: @provide_users.current_page, total: @provide_users.num_pages)
   %span.pull-right= t('views.page_info.records', offset: @provide_users.offset_value+1, limit: (@provide_users.offset_value + @provide_users.length), total: @provide_users.total_count)
@@ -29,8 +36,3 @@
 
 = paginate @provide_users
 
-%br
-
-= link_to new_admin_provide_user_path, class: 'btn btn-primary btn-white' do
-  %i.glyphicon.glyphicon-plus
-  = t('helpers.titles.new', { model: ProvideUser.model_name.human })

@@ -1,5 +1,12 @@
 - @page_title = t('helpers.titles.list', { model: Item.model_name.human })
 
+%div
+  = link_to new_admin_item_path, class: 'btn btn-primary btn-white' do
+    %i.glyphicon.glyphicon-plus
+    = t('helpers.titles.new', { model: Item.model_name.human })
+
+%br
+
 %p
   %span.pull-left= t('views.page_info.page', current: @items.current_page, total: @items.num_pages)
   %span.pull-right= t('views.page_info.records', offset: @items.offset_value+1, limit: (@items.offset_value + @items.length), total: @items.total_count)
@@ -38,8 +45,3 @@
 
 = paginate @items
 
-%br
-
-= link_to new_admin_item_path, class: 'btn btn-primary btn-white' do
-  %i.glyphicon.glyphicon-plus
-  = t('helpers.titles.new', { model: Item.model_name.human })

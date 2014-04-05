@@ -1,5 +1,12 @@
 - @page_title = t('helpers.titles.list', { model: Coupon.model_name.human })
 
+%div
+  = link_to new_admin_coupon_path, class: 'btn btn-primary btn-white' do
+    %i.glyphicon.glyphicon-plus
+    = t('helpers.titles.new', { model: Coupon.model_name.human })
+
+%br
+
 %p
   %span.pull-left= t('views.page_info.page', current: @coupons.current_page, total: @coupons.num_pages)
   %span.pull-right= t('views.page_info.records', offset: @coupons.offset_value+1, limit: (@coupons.offset_value + @coupons.length), total: @coupons.total_count)
@@ -28,10 +35,4 @@
           = t('helpers.actions.destroy')
 
 = paginate @coupons
-
-%br
-
-= link_to new_admin_coupon_path, class: 'btn btn-primary btn-white' do
-  %i.glyphicon.glyphicon-plus
-  = t('helpers.titles.new', { model: Coupon.model_name.human })
 
