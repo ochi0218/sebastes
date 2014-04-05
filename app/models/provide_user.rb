@@ -2,10 +2,11 @@
 # 業務アカウント
 #
 class ProvideUser < ActiveRecord::Base
+  validates :provider_name, presence: true
+
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   before_validation :blank_password_to_nil
-  validates :provider_name, presence: true
 
   private
 
