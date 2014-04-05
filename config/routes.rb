@@ -1,9 +1,11 @@
 Sebastes::Application.routes.draw do
+  get "item/index"
   devise_for :provide_users, controllers: { sessions: 'provide/sessions' }
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
-  get "home/index"
+  get 'home/index'
+  get 'items' => 'items#index'
 
   namespace :admin do
     root 'items#index'

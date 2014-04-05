@@ -8,4 +8,7 @@ class Item < ActiveRecord::Base
   validates_numericality_of :stock, greater_than_or_equal_to: 0
 
   mount_uploader :image, ItemImageUploader
+
+  scope :published, -> { where(display_flag: true) }
+  scope :publish_sorted, -> { order(sort_no: :asc) }
 end

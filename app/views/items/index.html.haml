@@ -1,0 +1,27 @@
+- @page_title = t('helpers.titles.list', { model: Item.model_name.human })
+
+
+%p
+  %span.pull-left= t('views.page_info.page', current: @items.current_page, total: @items.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @items.offset_value+1, limit: (@items.offset_value + @items.length), total: @items.total_count)
+  %span.clearfix
+
+%table.table.table-striped.table-hover
+  %tr
+    %th.thumb-image-col
+    %th= Item.human_attribute_name(:name)
+    %th= Item.human_attribute_name(:price)
+    %th= Item.human_attribute_name(:stock)
+
+  - @items.each do |item|
+    %tr
+      - if item.image.present?
+        %td.thmb-image-col= image_tag item.image.thumb
+      - else
+        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
+      %td= item.name
+      %td= number_to_currency item.price
+      %td= number_to_human(item.stock, units: 'number.human.stock_units.units' )
+
+= paginate @items
+
