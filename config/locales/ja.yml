@@ -159,6 +159,7 @@ ja:
       destroy: '削除'
       login: 'ログイン'
       logout: 'ログアウト'
+      signup: 'ユーザ登録'
     submit:
       create: '登録する'
       submit: '保存する'

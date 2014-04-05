@@ -2,6 +2,9 @@
 
 ja:
   devise:
+    shared:
+      links:
+        forget_password: '※パスワードを忘れた方はこちら'
     confirmations:
       confirmed: 'アカウントを登録しました。'
       send_instructions: '登録方法を数分以内にメールでご連絡します。'
@@ -43,6 +46,9 @@ ja:
       updated: 'パスワードを変更しました。'
       updated_not_active: 'パスワードが正しく変更されました。'
     registrations:
+      new:
+        title: 'ユーザ登録'
+        submit_button: '登録'
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
       signed_up: 'ようこそ！ アカウント登録を受け付けました。'
       signed_up_but_inactive: 'アカウント登録を受け付けました。しかしまだ有効化されておらず、ログインできません。'

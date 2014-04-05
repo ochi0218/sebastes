@@ -23,6 +23,8 @@
                 = link_to t('helpers.actions.logout'), destroy_user_session_path, method: :delete
             - else
               %li
+                = link_to t('helpers.actions.signup'), new_user_registration_path
+              %li
                 = link_to t('helpers.actions.login'), new_user_session_path
     .cotainer-fluid
       .row.contents-wrapper
