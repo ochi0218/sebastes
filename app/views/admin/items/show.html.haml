@@ -12,6 +12,8 @@
     %div.col-sm-10
       - if @item.image.present?
         = image_tag @item.image_url
+      - else
+        = image_tag 'http://placehold.it/100&text=NoImage'
   %div.row
     %div.col-sm-2
       %b= Item.human_attribute_name(:price)
