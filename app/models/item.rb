@@ -10,5 +10,7 @@ class Item < ActiveRecord::Base
   mount_uploader :image, ItemImageUploader
 
   scope :published, -> { where(display_flag: true) }
-  scope :publish_sorted, -> { order(sort_no: :asc) }
+  scope :by_publish_sort, -> { order(sort_no: :asc) }
+  scope :by_newest, -> { order(updated_at: :desc) }
+  default_scope by_newest
 end

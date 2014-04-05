@@ -8,6 +8,9 @@ class ProvideUser < ActiveRecord::Base
 
   before_validation :blank_password_to_nil
 
+  scope :by_newest, -> { order(updated_at: :desc) }
+  default_scope by_newest
+
   private
 
   #
