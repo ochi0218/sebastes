@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
   # ポイントを更新する。
   #
   def update_user_point(user_point_log)
-    User.transaction do
-      self.lock!
+    self.with_lock do 
       update_point(user_point_log) if create_user_point_log(user_point_log)
     end
   end

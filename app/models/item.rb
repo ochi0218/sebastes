@@ -13,4 +13,13 @@ class Item < ActiveRecord::Base
   scope :by_publish_sort, -> { order(sort_no: :asc) }
   scope :by_newest, -> { order(updated_at: :desc) }
   default_scope by_newest
+
+  #
+  # ロックをかけて更新を行う。
+  #
+  def update_with_lock(item_attributes)
+    self.with_lock do
+      self.update(item_attributes)
+    end
+  end
 end

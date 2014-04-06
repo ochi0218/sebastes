@@ -9,7 +9,6 @@ class CreateItems < ActiveRecord::Migration
       t.integer :sort_no
       t.integer :stock, default: 0
       
-      t.integer :lock_version, default: 0
       t.timestamps
     end
   end
