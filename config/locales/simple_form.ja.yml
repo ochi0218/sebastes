@@ -12,6 +12,8 @@ ja:
         code: '英数字12桁で登録してください。'
       user:
         destination_zip_code: 'ハイフン(-)付きの形式で入力してください。例) 160-0001'
+      user_point_log:
+        change_point: '増加、または減算するポイントを入力してください。例）12、-12'
     placeholders:
     labels:
       item:
