@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   validates :image, file_size: { maximum: 0.5.megabytes.to_i }
   validates_numericality_of :price, :sort_no, greater_than: 0
   validates_numericality_of :stock, greater_than_or_equal_to: 0
-  validates_numericality_of :add_stock_num, greater_than_or_equal_to: 0, allow_blank: true
+  validates_numericality_of :add_stock_num, greater_than: 0, allow_nil: true
 
   mount_uploader :image, ItemImageUploader
 
@@ -31,8 +31,9 @@ class Item < ActiveRecord::Base
   #
   def add_stock(item_attributes)
     self.with_lock do
-      self.add_stock_num = item_attributes[:add_stock_num] if item_attributes[:add_stock_num].present?
-      self.stock += self.add_stock_num.to_i if self.add_stock_num.present?
+      self.add_stock_num = item_attributes[:add_stock_num]
+      add_stock = (self.add_stock_num.present? ? self.add_stock_num : 0)
+      self.stock += add_stock.to_i
       self.update({ stock: self.stock })
     end
   end
