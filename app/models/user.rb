@@ -27,6 +27,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  #
+  # ロックをかけて更新を行う。
+  #
+  def update_with_lock(user_attributes)
+    self.with_lock do
+      self.update(user_attributes)
+    end
+  end
+
+  #
+  # ユーザポイント履歴からポイントを更新する。
+  #
+  def update_point(user_point_log)
+    new_point = self.point + user_point_log.change_point
+    self.update_attribute(:point, new_point)
+  end
+
   private
 
   #
@@ -47,23 +64,6 @@ class User < ActiveRecord::Base
     user_point_log.before_point = self.point
 
     user_point_log.save
-  end
-
-  #
-  # ロックをかけて更新を行う。
-  #
-  def update_with_lock(user_attributes)
-    self.with_lock do
-      self.update(user_attributes)
-    end
-  end
-
-  #
-  # ユーザポイント履歴からポイントを更新する。
-  #
-  def update_point(user_point_log)
-    new_point = self.point + user_point_log.change_point
-    self.update_attribute(:point, new_point)
   end
 end
 
