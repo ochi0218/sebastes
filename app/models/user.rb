@@ -36,14 +36,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  #
-  # ユーザポイント履歴からポイントを更新する。
-  #
-  def update_point(user_point_log)
-    new_point = self.point + user_point_log.change_point
-    self.update_attribute(:point, new_point)
-  end
-
   private
 
   #
@@ -52,6 +44,14 @@ class User < ActiveRecord::Base
   def blank_password_to_nil
     self.password = nil if self.password.blank?
     self.password_confirmation = nil if self.password_confirmation.blank?
+  end
+
+  #
+  # ユーザポイント履歴からポイントを更新する。
+  #
+  def update_point(user_point_log)
+    new_point = self.point + user_point_log.change_point
+    self.update_attribute(:point, new_point)
   end
 
   #
