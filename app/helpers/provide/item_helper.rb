@@ -1,2 +1,0 @@
-module Provide::ItemHelper
-end

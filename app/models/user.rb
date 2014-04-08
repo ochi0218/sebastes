@@ -50,6 +50,15 @@ class User < ActiveRecord::Base
   end
 
   #
+  # ロックをかけて更新を行う。
+  #
+  def update_with_lock(user_attributes)
+    self.with_lock do
+      self.update(user_attributes)
+    end
+  end
+
+  #
   # ユーザポイント履歴からポイントを更新する。
   #
   def update_point(user_point_log)

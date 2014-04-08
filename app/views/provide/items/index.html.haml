@@ -28,8 +28,8 @@
       %td.action-col= link_to t('helpers.actions.show'), [:provide, item], class: 'btn btn-default btn-xs'
       %td.action-col
         = link_to edit_provide_item_path(item), class: 'btn btn-default btn-xs' do
-          %i.glyphicon.glyphicon-edit
-          = t('helpers.actions.edit')
+          %i.glyphicon.glyphicon-plus
+          = t('.add_stock_button')
 
 = paginate @items
 

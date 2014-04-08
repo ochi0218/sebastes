@@ -1,4 +1,4 @@
-module CouponsHelper
+module Admin::CouponsHelper
   #
   # クーポンコードを表示用の文字列に変換する
   #

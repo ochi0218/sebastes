@@ -4,8 +4,7 @@ Sebastes::Application.routes.draw do
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
-  get 'home/index'
-  get 'items' => 'items#index'
+  get 'items/index'
 
   namespace :admin do
     root 'items#index'
@@ -26,7 +25,7 @@ Sebastes::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'items#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

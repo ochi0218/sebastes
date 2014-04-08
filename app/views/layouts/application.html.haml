@@ -6,11 +6,12 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    %header#header.navbar.navbar-inverse.navbar-fixed-top
+    %header#header.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
           = link_to t('site_titles.user'), root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
+          %ul.nav.navbar-nav
           %ul.nav.navbar-nav.navbar-right
             - if admin_user_signed_in?
               %li

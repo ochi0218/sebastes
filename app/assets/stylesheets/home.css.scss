@@ -1,3 +1,19 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.item-list {
+    .item-name {
+        font-weight: bold;
+        font-size: 25px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #dcdcdc;
+    }
+    .item-description {
+        padding-bottom: 5px;
+        border-bottom: 2px solid #dcdcdc;
+    }
+    .item-price {
+        font-weight: bold;
+    }
+}

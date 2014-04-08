@@ -319,3 +319,13 @@ ja:
     user_point_logs:
       new:
         current_point: '現在ポイント'
+  provide:
+    items:
+      index:
+        add_stock_button: '在庫を追加'
+  items:
+    index:
+      item_rest: "( 残り: %{stock} )"
+      show_detail_button: '商品詳細へ'
+      add_cart_button: 'カートに入れる'
+

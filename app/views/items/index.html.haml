@@ -1,27 +1,32 @@
-- @page_title = t('helpers.titles.list', { model: Item.model_name.human })
-
-
 %p
   %span.pull-left= t('views.page_info.page', current: @items.current_page, total: @items.num_pages)
   %span.pull-right= t('views.page_info.records', offset: @items.offset_value+1, limit: (@items.offset_value + @items.length), total: @items.total_count)
   %span.clearfix
 
-%table.table.table-striped.table-hover
-  %tr
-    %th.thumb-image-col
-    %th= Item.human_attribute_name(:name)
-    %th= Item.human_attribute_name(:price)
-    %th= Item.human_attribute_name(:stock)
-
+%table.table.table-hover.item-list
   - @items.each do |item|
     %tr
       - if item.image.present?
-        %td.thmb-image-col= image_tag item.image.thumb
+        %td.thmb-image-col= image_tag item.image.normal
       - else
-        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
-      %td= item.name
-      %td= number_to_currency item.price
-      %td= number_to_human(item.stock, units: 'number.human.stock_units.units' )
+        %td.thumb-image-col= image_tag 'http://placehold.it/100&text=NoImage'
+      %td
+        %div
+          %p.item-name= item.name
+          = simple_format(item.description, class: 'item-description')
+          %p.item-price
+            %span= number_to_currency(item.price)
+            %span= t('.item_rest' , { stock: number_to_human(item.stock, units: 'number.human.stock_units.units') })
+            %span.pull-right
+              = link_to '#', class: 'btn btn-xs btn-white btn-success' do
+                %i.glyphicon.glyphicon-shopping-cart
+                = t('.add_cart_button')
+            %span.pull-right
+              &nbsp;&nbsp;
+            %span.pull-right
+              = link_to '#', class: 'btn btn-xs btn-white btn-info' do
+                = t('.show_detail_button')
+            %span.clearfix
 
 = paginate @items
 

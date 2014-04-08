@@ -23,7 +23,8 @@ ja:
         description: '商品説明'
         display_flag: '表示するか'
         sort_no: '表示順'
-        stock: '在庫'
+        stock: '在庫数'
+        add_stock_num: '追加する在庫数'
       user:
         email: 'メールアドレス'
         password: 'パスワード'
