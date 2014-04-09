@@ -1,0 +1,7 @@
+- if current_user.voted_as_when_voted_for diary
+  = t('.good_button')
+- else
+  = link_to good_diary_path(diary), remote: true do
+    %i.glyphicon.glyphicon-thumbs-up
+    = t('.good_button')
+= diary.likes.size    

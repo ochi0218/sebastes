@@ -9,4 +9,6 @@ class Diary < ActiveRecord::Base
   validates :image, file_size: { maximum: 0.5.megabytes.to_i }
 
   mount_uploader :image, DiaryImageUploader
+
+  acts_as_votable
 end

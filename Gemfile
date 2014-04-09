@@ -44,6 +44,9 @@ gem 'fog'
 # Enum
 gem 'enumerize'
 
+# voting
+gem 'acts_as_votable'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

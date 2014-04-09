@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_voter
+
   mount_uploader :profile_image, UserProfileImageUploader
 
   before_validation :blank_password_to_nil

@@ -27,12 +27,13 @@
         %td.dialy_image= image_tag diary.image.normal
     %tr
       %td.diary_actions
-        = link_to '#' do
-          %i.glyphicon.glyphicon-thumbs-up
-          = t('.good_button')
-        = link_to new_diary_comment_path(diary) do
-          %i.glyphicon.glyphicon-comment
-          = t('.comment_button')
+        %span{ id: "good-button-#{diary.id}" }
+          = render 'good', { diary: diary }
+        %span
+          = link_to new_diary_comment_path(diary) do
+            %i.glyphicon.glyphicon-comment
+            = t('.comment_button')
+          = diary.comments.size
 
 = paginate @diaries
 

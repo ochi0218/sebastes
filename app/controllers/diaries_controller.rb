@@ -2,7 +2,7 @@
 # 日記コントローラ。
 #
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  before_action :set_diary, only: [:show, :edit, :update, :destroy, :good]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /diaries
@@ -62,6 +62,13 @@ class DiariesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to diaries_url, notice: I18n.t('helpers.notice.success.destroy', { model: Diary.model_name.human }) }
       format.json { head :no_content }
+    end
+  end
+
+  def good
+    @diary.liked_by current_user
+    respond_to do |format|
+      format.js
     end
   end
 

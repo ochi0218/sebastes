@@ -6,6 +6,7 @@ Sebastes::Application.routes.draw do
   resources :diaries do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
+  get 'diaries/:id/good' => 'diaries#good', as: 'good_diary'
   get 'items' => 'items#index'
 
   namespace :admin do

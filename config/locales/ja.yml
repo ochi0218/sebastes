@@ -337,6 +337,8 @@ ja:
       show_detail_button: '商品詳細へ'
       add_cart_button: 'カートに入れる'
   diaries:
-    index:
+    good:
       good_button: 'Good!'
+    index:
       comment_button: 'コメントを書く'
+
