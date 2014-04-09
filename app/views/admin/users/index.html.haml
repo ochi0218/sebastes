@@ -33,7 +33,7 @@
       %td
         = number_to_human(user.point, units: 'number.human.point_units.units')
         %span &nbsp;
-        = link_to admin_user_point_logs_path(user), class: 'btn btn-default btn-xs' do
+        = link_to new_admin_user_user_point_logs_path(user), class: 'btn btn-default btn-xs' do
           %i.glyphicon.glyphicon-bell
           = t('.point_edit_button')
       %td.action-col= link_to t('helpers.actions.show'), [:admin, user], class: 'btn btn-default btn-xs'

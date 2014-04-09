@@ -12,10 +12,10 @@ Sebastes::Application.routes.draw do
     root 'items#index'
     resources :coupons
     resources :items
-    resources :users
+    resources :users do 
+      resource :user_point_logs, only: [:new, :create]
+    end
     resources :provide_users
-    get 'users/:id/point' => 'user_point_logs#new', as: :user_point_logs
-    post 'users/:id/point' => 'user_point_logs#create', as: :new_user_point_logs
   end
 
   namespace :provide do
