@@ -58,4 +58,10 @@ ja:
       coupon:
         code: 'クーポンコード'
         point: 'ポイント'
+      diary:
+        title: 'タイトル'
+        contents: '本文' 
+        image: '画像'
+      comment:
+        contents: 'コメント'
 

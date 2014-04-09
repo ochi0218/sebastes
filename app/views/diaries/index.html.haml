@@ -1,0 +1,38 @@
+%div
+  = link_to new_diary_path, class: 'btn btn-primary btn-white' do
+    %i.glyphicon.glyphicon-plus
+    = t('helpers.titles.new', { model: Diary.model_name.human })
+
+%br
+
+%p
+  %span.pull-left= t('views.page_info.page', current: @diaries.current_page, total: @diaries.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @diaries.offset_value+1, limit: (@diaries.offset_value + @diaries.length), total: @diaries.total_count)
+  %span.clearfix
+
+%table.table.diary_list
+  %tr
+
+  - @diaries.each do |diary|
+    %tr
+      %td.diary_title
+        = link_to diary.title, diary
+        %span= diary.user.nick_name
+        %span= l(diary.created_at)
+    %tr
+      %td.diary_contents
+        %p= simple_format(diary.contents)
+    - if diary.image.present?
+      %tr
+        %td.dialy_image= image_tag diary.image.normal
+    %tr
+      %td.diary_actions
+        = link_to '#' do
+          %i.glyphicon.glyphicon-thumbs-up
+          = t('.good_button')
+        = link_to new_diary_comment_path(diary) do
+          %i.glyphicon.glyphicon-comment
+          = t('.comment_button')
+
+= paginate @diaries
+

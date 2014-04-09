@@ -1,0 +1,11 @@
+= simple_form_for @diary, html: { class: 'form-horizontal', multipart: true } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :title
+  = f.input :contents
+  = f.input :image
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+

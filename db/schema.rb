@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405114602) do
+ActiveRecord::Schema.define(version: 20140409123643) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140405114602) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "comments", force: true do |t|
+    t.text     "contents"
+    t.integer  "diary_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "coupon_logs", force: true do |t|
     t.datetime "used_datetime"
     t.integer  "coupon_id"
@@ -42,6 +50,15 @@ ActiveRecord::Schema.define(version: 20140405114602) do
   create_table "coupons", force: true do |t|
     t.string   "code"
     t.integer  "point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "diaries", force: true do |t|
+    t.string   "title"
+    t.text     "contents"
+    t.string   "image"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

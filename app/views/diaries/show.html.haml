@@ -1,0 +1,46 @@
+- @page_title = t('helpers.titles.show', { model: Diary.model_name.human })
+
+- if @diary.user == current_user
+  %div
+    = link_to edit_diary_path(@diary), class: 'btn btn-primary btn-white' do
+      %i.glyphicon.glyphicon-edit
+      = t('helpers.actions.edit')
+    = link_to @diary, method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-white' do
+      %i.glyphicon.glyphicon-trash
+      = t('helpers.actions.destroy')
+
+%br
+
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= Diary.human_attribute_name(:image)
+    %div.col-sm-10
+      = image_tag @diary.image.url
+  %div.row
+    %div.col-sm-2
+      %b= Diary.human_attribute_name(:title)
+    %div.col-sm-10
+      = @diary.title
+  %div.row
+    %div.col-sm-2
+      %b= Diary.human_attribute_name(:contents)
+    %div.col-sm-10
+      = @diary.contents
+
+%table.table
+  %legend= Comment.model_name.human
+  - @diary.comments.each do |comment|
+    %tr
+      %td= simple_format(comment.contents)
+      %td
+        - if comment.user == current_user
+          = link_to [:edit, @diary, comment], class: 'btn btn-primary btn-white btn-xs' do
+            %i.glyphicon.glyphicon-edit
+            = t('helpers.actions.edit')
+      %td
+        - if comment.user == current_user
+          = link_to [@diary, comment], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-white btn-xs' do
+            %i.glyphicon.glyphicon-trash
+            = t('helpers.actions.destroy')
+

@@ -1,0 +1,8 @@
+= simple_form_for [@diary, @comment], html: { class: 'form-horizontal' } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :contents
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
