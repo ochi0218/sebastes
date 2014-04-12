@@ -3,6 +3,8 @@ Sebastes::Application.routes.draw do
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
+  get 'users/destination/edit' => 'users#destination_edit', as: 'edit_users_distination'
+  patch 'users/destination' => 'users#destination_update', as: 'users_distination'
   resources :diaries do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end

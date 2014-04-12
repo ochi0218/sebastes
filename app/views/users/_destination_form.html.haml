@@ -1,0 +1,10 @@
+= simple_form_for @user, url: users_distination_path, html: { class: 'form-horizontal' } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :destination_name
+  = f.input :destination_zip_code
+  = f.input :destination_address
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
