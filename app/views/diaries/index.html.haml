@@ -10,30 +10,28 @@
   %span.pull-right= t('views.page_info.records', offset: @diaries.offset_value+1, limit: (@diaries.offset_value + @diaries.length), total: @diaries.total_count)
   %span.clearfix
 
-%table.table.diary_list
-  %tr
 
-  - @diaries.each do |diary|
-    %tr
-      %td.diary_title
-        = link_to diary.title, diary
-        %span= diary.user.nick_name
-        %span= l(diary.created_at)
-    %tr
-      %td.diary_contents
-        %p= simple_format(diary.contents)
+- @diaries.each do |diary|
+  .diary-list-contents
+    .title
+      %span.link= link_to diary.title, diary
+      %span by
+      %span= diary.user.nick_name
+      %span.pull-right= l(diary.created_at, format: :long)
+      %span.clear-both
+    .content
+      %p= simple_format(diary.contents)
     - if diary.image.present?
-      %tr
-        %td.dialy_image= image_tag diary.image.normal
-    %tr
-      %td.diary_actions
-        %span{ id: "good-button-#{diary.id}" }
-          = render 'good', { diary: diary }
-        %span
-          = link_to new_diary_comment_path(diary) do
-            %i.glyphicon.glyphicon-comment
-            = t('.comment_button')
-          = diary.comments.size
+      .image
+        = image_tag diary.image.normal
+    .actions
+      %span.good{ id: "good-button-#{diary.id}" }
+        = render 'good', { diary: diary }
+      %span.comment
+        = link_to new_diary_comment_path(diary) do
+          %i.glyphicon.glyphicon-comment
+          = t('.comment_button')
+        %span.size= t('.size', size: diary.comments.size)
 
 = paginate @diaries
 

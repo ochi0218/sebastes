@@ -1,18 +1,46 @@
 // Place all the styles related to the diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.diary_list {
-    .diary_title {
-        background-color: #dcdcdc;
-        border: 1px solid #3e312b;
+.diary-list-contents {
+    .title {
+        background-color: #fceeeb;
+        border: 1px solid #dcdcdc;
+        padding: 5px;
+        .link {
+            font-size: 16px;
+            padding-right: 5px;
+        }
     }
-    .diary_contents {
-        border: 1px solid #3e312b;
+    .content {
+        border-top: 4px solid #ee7bac;
+        border-left: 1px solid #dcdcdc;
+        border-right: 1px solid #dcdcdc;
+        padding: 5px;
     }
-    .diary_image {
-        border: 1px solid #3e312b;
+    .image {
+        border: 1px solid #dcdcdc;
+        padding: 5px;
     }
-    .diary_actions {
-        border: 1px solid #3e312b;
+    .actions {
+        border: 1px solid #dcdcdc;
+        padding: 5px;
+        .good {
+            margin-right: 5px;
+        }
+        .size {
+            margin-left: 3px;
+        }
+    }
+}
+.comment-list {
+    table {
+        border: 1px solid #dcdcdc;
+    }
+    margin-left: 0px;
+    h4 {
+        background-color: #fceeeb;
+        border: 1px solid #dcdcdc;
+        margin: 0px;
+        padding: 5px;
     }
 }

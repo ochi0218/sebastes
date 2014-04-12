@@ -235,7 +235,7 @@ ja:
     am: 午前
     formats:
       default: ! '%Y/%m/%d %H:%M:%S'
-      long: ! '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
+      long: ! '%Y年%m月%d日%H時%M分'
       short: ! '%y/%m/%d %H:%M'
       time_only: ! '%-H時%-M分'
     pm: 午後
@@ -339,6 +339,8 @@ ja:
   diaries:
     good:
       good_button: 'Good!'
+      size: '(%{size})'
     index:
       comment_button: 'コメントを書く'
+      size: '(%{size})'
 

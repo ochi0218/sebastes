@@ -16,7 +16,10 @@
     %div.col-sm-2
       %b= Diary.human_attribute_name(:image)
     %div.col-sm-10
-      = image_tag @diary.image.url
+      - if @diary.image.present?
+        = image_tag @diary.image.url
+      - else
+        = image_tag 'http://placehold.it/100&text=NoImage'
   %div.row
     %div.col-sm-2
       %b= Diary.human_attribute_name(:title)
@@ -26,21 +29,21 @@
     %div.col-sm-2
       %b= Diary.human_attribute_name(:contents)
     %div.col-sm-10
-      = @diary.contents
-
-%table.table
-  %legend= Comment.model_name.human
-  - @diary.comments.each do |comment|
-    %tr
-      %td= simple_format(comment.contents)
-      %td
-        - if comment.user == current_user
-          = link_to [:edit, @diary, comment], class: 'btn btn-primary btn-white btn-xs' do
-            %i.glyphicon.glyphicon-edit
-            = t('helpers.actions.edit')
-      %td
-        - if comment.user == current_user
-          = link_to [@diary, comment], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-white btn-xs' do
-            %i.glyphicon.glyphicon-trash
-            = t('helpers.actions.destroy')
+      = simple_format(@diary.contents)
+  %div.row.comment-list
+    %h4= Comment.model_name.human
+    %table.table.table-striped
+      - @diary.comments.each do |comment|
+        %tr
+          %td= simple_format(comment.contents)
+          %td
+            - if comment.user == current_user
+              = link_to [:edit, @diary, comment], class: 'btn btn-primary btn-white btn-xs' do
+                %i.glyphicon.glyphicon-edit
+                = t('helpers.actions.edit')
+          %td
+            - if comment.user == current_user
+              = link_to [@diary, comment], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-white btn-xs' do
+                %i.glyphicon.glyphicon-trash
+                = t('helpers.actions.destroy')
 
