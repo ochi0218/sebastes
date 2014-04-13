@@ -214,6 +214,11 @@ ja:
           delimiter: ','
         units:
           unit: '個'
+      quantity_units:
+        format:
+          delimiter: ','
+        units:
+          unit: '個'
       point_units:
         format:
           delimiter: ','
@@ -252,6 +257,8 @@ ja:
       coupon_log: 'クーポン利用履歴'
       diary: '日記'
       comment: 'コメント'
+      cart: 'カート'
+      cart_item: 'カート商品'
     attributes:
       item:
         name: '商品名'
@@ -297,6 +304,8 @@ ja:
         image: '画像'
       comment:
         contents: 'コメント'
+      cart_item:
+        quantity: '数量'
     errors:
       <<: *errors
   enumerize:

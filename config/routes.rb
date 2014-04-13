@@ -9,6 +9,9 @@ Sebastes::Application.routes.draw do
   resources :diaries do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
+  get 'cart/items' => 'cart_items#index', as: 'cart_item_list'
+  get 'cart/items/add/:item_id' => 'cart_items#add', as: 'add_cart_items'
+  resource :cart_items, only: [:create, :update, :destroy], as: 'cart_items', path: 'cart/items/:item_id'
   get 'diaries/:id/good' => 'diaries#good', as: 'good_diary'
   get 'items' => 'items#index'
 

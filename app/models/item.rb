@@ -4,6 +4,8 @@
 class Item < ActiveRecord::Base
   attr_accessor :add_stock_num
 
+  has_many :cart_items, dependent: :destroy
+
   validates :name, :price, :sort_no, presence: true
   validates :image, file_size: { maximum: 0.5.megabytes.to_i }
   validates_numericality_of :price, :sort_no, greater_than: 0

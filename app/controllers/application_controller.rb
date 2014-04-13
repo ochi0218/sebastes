@@ -7,8 +7,20 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  #
+  # Deviseでのユーザ登録/更新時に許可するパラメータを設定する
+  #
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :nick_name << :profile_image
     devise_parameter_sanitizer.for(:account_update) << :nick_name << :profile_image
+  end
+
+  private
+
+  def current_cart
+    Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    cart = Cart.create
+    cart.tap {|c| session[:cart_id] = c.id }
   end
 end

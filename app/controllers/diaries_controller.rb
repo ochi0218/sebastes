@@ -2,7 +2,8 @@
 # 日記コントローラ。
 #
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:show, :edit, :update, :destroy, :good]
+  before_action :set_diary, only: [:show, :good]
+  before_action :set_own_diary, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /diaries
@@ -78,6 +79,11 @@ class DiariesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_diary
       @diary = Diary.find(params[:id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_own_diary
+      @diary = current_user.diaries.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -16,6 +16,8 @@
               = link_to Diary.model_name.human, diaries_path
             %li{ class: controller.controller_name == 'items' ? 'active' : '' }
               = link_to Item.model_name.human, items_path
+            %li{ class: controller.controller_name == 'cart_items' ? 'active' : '' }
+              = link_to Cart.model_name.human, cart_item_list_path
           %ul.nav.navbar-nav.navbar-right
             - if admin_user_signed_in?
               %li
