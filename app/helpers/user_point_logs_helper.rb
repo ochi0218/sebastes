@@ -1,0 +1,2 @@
+module UserPointLogsHelper
+end

@@ -13,6 +13,10 @@ class UserPointLog < ActiveRecord::Base
 
   before_save :validate_negative_number_of_changed_point
 
+  scope :by_newest, -> { order(updated_at: :desc) }
+  scope :by_log_date, -> { order(log_date: :desc) }
+  default_scope by_newest
+
   private
 
   #

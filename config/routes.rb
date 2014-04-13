@@ -1,4 +1,5 @@
 Sebastes::Application.routes.draw do
+  get "user_point_logs/index"
   devise_for :provide_users, controllers: { sessions: 'provide/sessions' }
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users

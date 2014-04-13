@@ -1,0 +1,25 @@
+- @page_title = t('helpers.titles.list', { model: UserPointLog.model_name.human })
+
+%p
+  %span.pull-left= t('views.page_info.page', current: @user_point_logs.current_page, total: @user_point_logs.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @user_point_logs.offset_value+1, limit: (@user_point_logs.offset_value + @user_point_logs.length), total: @user_point_logs.total_count)
+  %span.clearfix
+
+%table.table.table-striped.table-hover
+  %tr
+    %th= UserPointLog.human_attribute_name(:log_date)
+    %th= UserPointLog.human_attribute_name(:kind)
+    %th= UserPointLog.human_attribute_name(:change_point)
+    %th= UserPointLog.human_attribute_name(:before_point)
+    %th= UserPointLog.human_attribute_name(:description)
+
+  - @user_point_logs.each do |user_point_log|
+    %tr
+      %td= l user_point_log.log_date, format: :long
+      %td= user_point_log.kind.text
+      %td= number_to_human(user_point_log.change_point, units: 'number.human.point_units.units')
+      %td= number_to_human(user_point_log.before_point, units: 'number.human.point_units.units')
+      %td= simple_format(user_point_log.description)
+
+= paginate @user_point_logs
+

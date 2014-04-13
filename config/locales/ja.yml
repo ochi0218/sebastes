@@ -299,6 +299,12 @@ ja:
         contents: 'コメント'
     errors:
       <<: *errors
+  enumerize:
+    user_point_log:
+      kind:
+        system: 'システム'
+        coupon: 'クーポン'
+        used: '利用'
   views:
     pagination:
       first: "&laquo; 最初へ"
@@ -334,6 +340,7 @@ ja:
   user_actions:
     change_registation: 'ユーザ情報を変更する'
     change_destination: '配送先情報を変更する'
+    user_point_log: 'ポイント履歴を見る'
   items:
     index:
       item_rest: "( 残り: %{stock} )"
