@@ -1,4 +1,4 @@
-- if !current_user or current_user.voted_as_when_voted_for diary
+- if !user_signed_in? or current_user.voted_as_when_voted_for diary
   %i.glyphicon.glyphicon-thumbs-up
   = t('.good_button')
 - else

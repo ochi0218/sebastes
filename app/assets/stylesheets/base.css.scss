@@ -91,3 +91,27 @@ table.table {
         width: 40px;
     }
 }
+
+.user-profile {
+    padding-top: 10px;
+    border: 1px solid #efcccc;
+    background-color: #fff;
+    .profile-image {
+        text-align: center;
+    }
+    .nick-name {
+        margin-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-size: 17px;
+        border-bottom: 3px solid #efcccc;
+    }
+    .user-actions {
+        margin: 5px;
+        div {
+            padding: 5px;
+
+        }
+    }
+}
+

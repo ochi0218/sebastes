@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :nick_name
-    devise_parameter_sanitizer.for(:account_update) << :nick_name
+    devise_parameter_sanitizer.for(:sign_up) << :nick_name << :profile_image
+    devise_parameter_sanitizer.for(:account_update) << :nick_name << :profile_image
   end
 end

@@ -331,6 +331,9 @@ ja:
     items:
       index:
         add_stock_button: '在庫を追加'
+  user_actions:
+    change_registation: 'ユーザ情報を変更する'
+    change_destination: '配送先情報を変更する'
   items:
     index:
       item_rest: "( 残り: %{stock} )"
