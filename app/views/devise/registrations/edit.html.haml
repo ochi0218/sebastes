@@ -1,6 +1,6 @@
 - @page_title = t('.title')
 
-= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal col-sm-10' } do |f|
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
   - if notification = f.error_notification
     = notification
     
@@ -13,13 +13,13 @@
   = f.input :password_confirmation, required: false
   = f.input :current_password, required: true
   .form-actions
-    = f.button :submit, t('.submit_button'), class: 'btn btn-lg btn-primary btn-block'
+    = f.button :submit, t('.submit_button'), class: 'btn btn-lg btn-primary'
 
 %span.clearfix
 %br
 
-.col-sm-10
+%div
   %h2= t('.destroy_title')
   %hr
-    = link_to t('.destroy_link'), registration_path(resource_name), data: { confirm: t('.destroy_confirm') }, method: :delete, class: 'btn btn-lg btn-danger btn-block btn-white'
+    = link_to t('.destroy_link'), registration_path(resource_name), data: { confirm: t('.destroy_confirm') }, method: :delete, class: 'btn btn-lg btn-danger btn-white'
 

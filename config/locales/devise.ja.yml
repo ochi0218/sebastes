@@ -40,6 +40,9 @@ ja:
       success: '%{kind} アカウントによる個人認証に成功しました。'
       failure: '%{kind} アカウントによる個人認証に失敗しました（%{reason}）。'
     passwords:
+      new:
+        title: 'パスワード変更'
+        submit_buton: '送信'
       no_token: "このページにはアクセスできません。パスワード復元メールのリンクをコピーした場合には、正しい URL かどうかをお確かめください。"
       send_instructions: 'パスワードのリセット方法を数分以内にメールでご連絡します。'
       send_paranoid_instructions: "もしあなたのEメールアドレスが見つかった場合、パスワード復元用のメールが数分以内に送られます。"
