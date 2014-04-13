@@ -1,0 +1,6 @@
+%p= t('.information_message', title: @diary.title)
+%h4= t('.comment_detail')
+%p= @comment.contents
+%p
+  = link_to @diary, t('.detail_link')
+

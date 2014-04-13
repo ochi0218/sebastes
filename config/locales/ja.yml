@@ -343,4 +343,14 @@ ja:
     index:
       comment_button: 'コメントを書く'
       size: '(%{size})'
+  diary_notifier:
+    add_comment:
+      subject: 'あなたの日記にコメントがつきました'
+      information_message: 'あなたの日記「%{title}」にコメントがつきました。'
+      comment_detail: 'コメント内容'
+      detail_link: '日記を確認する'
+    add_good:
+      subject: 'あなたの日記にGoodがつきました'
+      information_message: 'あなたの日記「%{title}」にGoodがつきました。'
+      detail_link: '日記を確認する'
 

@@ -66,7 +66,9 @@ class DiariesController < ApplicationController
   end
 
   def good
-    @diary.liked_by current_user
+    if @diary.liked_by current_user
+      DiaryNotifier.add_good(@diary).deliver if current_user != @diary.user
+    end
     respond_to do |format|
       format.js
     end

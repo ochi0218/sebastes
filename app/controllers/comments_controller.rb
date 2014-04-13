@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        DiaryNotifier.add_comment(@diary, @comment).deliver if current_user != @diary.user
+
         format.html { redirect_to @diary, notice: I18n.t('helpers.notice.success.create', { model: Comment.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @comment }
       else
