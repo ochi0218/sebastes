@@ -10,4 +10,11 @@ class CartItem < ActiveRecord::Base
   validates_uniqueness_of :item_id, scope: :cart_id
 
   scope :search_item, lambda {|key| where(item_id: key) }
+
+  #
+  # 小計を求める。
+  #
+  def subtotal
+    quantity * item.price
+  end
 end

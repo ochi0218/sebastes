@@ -355,6 +355,10 @@ ja:
       item_rest: "( 残り: %{stock} )"
       show_detail_button: '商品詳細へ'
       add_cart_button: 'カートに入れる'
+  cart_items:
+    index:
+      subtotal: '計'
+      total: '小計'
   diaries:
     good:
       good_button: 'Good!'
