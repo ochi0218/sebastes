@@ -18,7 +18,7 @@
             %span= number_to_currency(item.price)
             %span= t('.item_rest' , { stock: number_to_human(item.stock, units: 'number.human.stock_units.units') })
             %span.pull-right
-              = link_to add_cart_items_path(item), class: 'btn btn-xs btn-white btn-success' do
+              = link_to add_cart_item_path(item), class: 'btn btn-xs btn-white btn-success' do
                 %i.glyphicon.glyphicon-shopping-cart
                 = t('.add_cart_button')
             %span.pull-right

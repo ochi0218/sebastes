@@ -27,7 +27,7 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to cart_item_list_path, notice: I18n.t('helpers.notice.success.create', { model: CartItem.model_name.human }) }
+        format.html { redirect_to cart_items_path, notice: I18n.t('helpers.notice.success.create', { model: CartItem.model_name.human }) }
         format.json { render action: 'show', status: :created, location: @cart_item }
       else
         format.html { render action: 'add' }
@@ -41,7 +41,7 @@ class CartItemsController < ApplicationController
   def update
     respond_to do |format|
       if @cart_item.update(cart_item_params)
-        format.html { redirect_to cart_item_list_path, notice: I18n.t('helpers.notice.success.update', { model: CartItem.model_name.human }) }
+        format.html { redirect_to cart_items_path, notice: I18n.t('helpers.notice.success.update', { model: CartItem.model_name.human }) }
         format.json { head :no_content }
       else
         format.html { render action: 'add' }
@@ -55,7 +55,7 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_item_list_url }
+      format.html { redirect_to cart_items_url }
       format.json { head :no_content }
     end
   end

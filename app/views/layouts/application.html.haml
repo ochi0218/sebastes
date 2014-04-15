@@ -17,7 +17,7 @@
             %li{ class: controller.controller_name == 'items' ? 'active' : '' }
               = link_to Item.model_name.human, items_path
             %li{ class: controller.controller_name == 'cart_items' ? 'active' : '' }
-              = link_to Cart.model_name.human, cart_item_list_path
+              = link_to Cart.model_name.human, cart_items_path
           %ul.nav.navbar-nav.navbar-right
             - if admin_user_signed_in?
               %li
@@ -51,7 +51,7 @@
                 %div
                   = link_to t('user_actions.change_destination'), edit_users_distination_path
                 %div
-                  = link_to t('user_actions.user_point_log'), user_point_logs_index_path
+                  = link_to t('user_actions.user_point_log'), user_point_logs_path
         #main.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
           - if notice or alert
             .notify-block

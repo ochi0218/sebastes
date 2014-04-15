@@ -10,17 +10,15 @@ class User < ActiveRecord::Base
   validates :destination_zip_code, format: { with: /\d{3,}-\d{4,}/ }, allow_blank: true
   validates :profile_image, file_size: { maximum: 0.5.megabytes.to_i }
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  scope :by_newest, -> { order(updated_at: :desc) }
+  default_scope by_newest
 
   acts_as_voter
-
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :profile_image, UserProfileImageUploader
 
   before_validation :blank_password_to_nil
-
-  scope :by_newest, -> { order(updated_at: :desc) }
-  default_scope by_newest
 
   #
   # ポイントを更新する。

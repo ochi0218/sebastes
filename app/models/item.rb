@@ -12,12 +12,12 @@ class Item < ActiveRecord::Base
   validates_numericality_of :stock, greater_than_or_equal_to: 0
   validates_numericality_of :add_stock_num, greater_than: 0, allow_nil: true
 
-  mount_uploader :image, ItemImageUploader
-
   scope :published, -> { where(display_flag: true) }
   scope :by_publish_sort, -> { order(sort_no: :asc) }
   scope :by_newest, -> { order(updated_at: :desc) }
   default_scope by_newest
+
+  mount_uploader :image, ItemImageUploader
 
   #
   # ロックをかけて更新を行う。

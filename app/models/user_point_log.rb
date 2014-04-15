@@ -2,20 +2,20 @@
 # ユーザポイント履歴。
 #
 class UserPointLog < ActiveRecord::Base
-  extend Enumerize
-
   belongs_to :user
+
   validates :change_point, :kind, :before_point, presence: true
   validates_numericality_of :change_point, allow_nil: true
   validates_numericality_of :before_point, greater_than_or_equal_to: 0
 
-  enumerize :kind, in: { system: 1, coupon: 2, used: 3 }
-
-  before_save :validate_negative_number_of_changed_point
-
   scope :by_newest, -> { order(updated_at: :desc) }
   scope :by_log_date, -> { order(log_date: :desc) }
   default_scope by_newest
+
+  extend Enumerize
+  enumerize :kind, in: { system: 1, coupon: 2, used: 3 }
+
+  before_save :validate_negative_number_of_changed_point
 
   private
 

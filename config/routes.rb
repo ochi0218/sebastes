@@ -1,19 +1,28 @@
 Sebastes::Application.routes.draw do
-  get "user_point_logs/index"
   devise_for :provide_users, controllers: { sessions: 'provide/sessions' }
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
   get 'users/destination/edit' => 'users#destination_edit', as: 'edit_users_distination'
   patch 'users/destination' => 'users#destination_update', as: 'users_distination'
+
+  resources :user_point_logs, only: [:index]
+  resources :items, only: [:index]
   resources :diaries do
+    member do
+      get 'good'
+    end
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
-  get 'cart/items' => 'cart_items#index', as: 'cart_item_list'
-  get 'cart/items/add/:item_id' => 'cart_items#add', as: 'add_cart_items'
-  resource :cart_items, only: [:create, :update, :destroy], as: 'cart_items', path: 'cart/items/:item_id'
-  get 'diaries/:id/good' => 'diaries#good', as: 'good_diary'
-  get 'items' => 'items#index'
+
+  scope 'cart' do
+    resource :cart_item, only: [:create, :update, :destroy], path: 'items/:item_id' do
+      member do
+        get 'add'
+      end
+    end
+    resources :cart_items, only: [:index], path: 'items'
+  end
 
   namespace :admin do
     root 'items#index'

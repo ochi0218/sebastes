@@ -2,5 +2,5 @@
 %h4= t('.comment_detail')
 %p= @comment.contents
 %p
-  = link_to @diary, t('.detail_link')
+  = link_to diary_url(@diary), t('.detail_link')
 
