@@ -14,6 +14,10 @@ ja:
         destination_zip_code: 'ハイフン(-)付きの形式で入力してください。例) 160-0001'
       user_point_log:
         change_point: '増加、または減算するポイントを入力してください。例）12、-12'
+      order:
+        delivery_date: '配送日を指定する場合のみ、3営業日（営業日: 月-金）から14営業日までの日付を入力してください。'
+        delivery_time_zone: '配送時間帯を指定する場合のみ、入力してください。'
+        payment_method: '決済方法は「代引き決済」のみとさせていただいております。'
     placeholders:
     labels:
       item:
@@ -64,4 +68,15 @@ ja:
         image: '画像'
       comment:
         contents: 'コメント'
+      order:
+        order_number: '注文番号'
+        date: '注文日時'
+        destination_zip_code: '送付先(郵便番号)'
+        destination_address: '送付先(住所)'
+        destination_name: '送付先(名前)'
+        payment_method: '決済方法'
+        delivery_date: '希望配送日'
+        delivery_time_zone: '希望配送時間帯'
+        fee: '手数料'
+        delivery_fee: '配送手数料'
 

@@ -2,15 +2,13 @@
 # 商品
 #
 class Item < ActiveRecord::Base
-  attr_accessor :add_stock_num
-
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items
+  has_many :order_items
 
   validates :name, :price, :sort_no, presence: true
   validates :image, file_size: { maximum: 0.5.megabytes.to_i }
   validates_numericality_of :price, :sort_no, greater_than: 0
-  validates_numericality_of :stock, greater_than_or_equal_to: 0
-  validates_numericality_of :add_stock_num, greater_than: 0, allow_nil: true
+  validates_numericality_of :stock, greater_than_or_equal_to: 0, message: :negative_number_of_item_stock
 
   scope :published, -> { where(display_flag: true) }
   scope :by_publish_sort, -> { order(sort_no: :asc) }
@@ -31,11 +29,21 @@ class Item < ActiveRecord::Base
   #
   # 在庫を追加する。
   #
-  def add_stock(item_attributes)
+  def add_stock(add_stock_num)
     self.with_lock do
-      self.add_stock_num = item_attributes[:add_stock_num]
-      add_stock = (self.add_stock_num.present? ? self.add_stock_num : 0)
+      add_stock = (add_stock_num.present? ? add_stock_num : 0)
       self.stock += add_stock.to_i
+      self.update({ stock: self.stock })
+    end
+  end
+
+  #
+  # 在庫を減らす。
+  #
+  def remove_stock(remove_stock_num)
+    self.with_lock do
+      remove_stock = (remove_stock_num.present? ? remove_stock_num : 0)
+      self.stock -= remove_stock.to_i
       self.update({ stock: self.stock })
     end
   end

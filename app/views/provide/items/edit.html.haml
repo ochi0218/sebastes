@@ -1,4 +1,17 @@
 - @page_title = t('helpers.titles.edit', { model: Item.model_name.human })
 
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:name)
+    %div.col-sm-10
+      = @item.name
+  %div.row
+    %div.col-sm-2
+      %b= Item.human_attribute_name(:stock)
+    %div.col-sm-10
+      = number_to_human(@item.stock, units: 'number.human.stock_units.units' )
+
+
 = render 'form'
 

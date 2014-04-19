@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413072037) do
+ActiveRecord::Schema.define(version: 20140415143056) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -84,6 +84,32 @@ ActiveRecord::Schema.define(version: 20140413072037) do
     t.boolean  "display_flag"
     t.integer  "sort_no"
     t.integer  "stock",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "item_id"
+    t.integer  "price"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.string   "order_number"
+    t.datetime "date"
+    t.string   "destination_zip_code"
+    t.string   "destination_address"
+    t.string   "destination_name"
+    t.integer  "payment_method"
+    t.integer  "fee"
+    t.integer  "delivery_fee"
+    t.integer  "use_point"
+    t.date     "delivery_date"
+    t.integer  "delivery_time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

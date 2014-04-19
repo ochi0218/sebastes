@@ -6,6 +6,7 @@ Sebastes::Application.routes.draw do
   get 'users/destination/edit' => 'users#destination_edit', as: 'edit_users_distination'
   patch 'users/destination' => 'users#destination_update', as: 'users_distination'
 
+  resources :orders, except: [:edit, :update]
   resources :user_point_logs, only: [:index]
   resources :items, only: [:index]
   resources :diaries do

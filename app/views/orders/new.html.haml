@@ -1,0 +1,25 @@
+
+%table.table.table-striped.table-hover
+  %tr
+    %th.thumb-image-col
+    %th= Item.human_attribute_name(:name)
+    %th= Item.human_attribute_name(:price)
+    %th= CartItem.human_attribute_name(:quantity)
+    %th= CartItem.human_attribute_name(:subtotal)
+
+  - @cart.cart_items.each do |cart_item|
+    %tr
+      - if cart_item.item.image.present?
+        %td.thumb-image-col= image_tag cart_item.item.image.thumb
+      - else
+        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
+      %td= cart_item.item.name
+      %td= number_to_currency(cart_item.item.price)
+      %td= number_to_human(cart_item.quantity, units: 'number.human.quantity_units.units')
+      %td= number_to_currency(cart_item.subtotal)
+  %tr.success
+    %th{ colspan: 4 }= t('helpers.currency.total')
+    %td{ colspan: 3 }= number_to_currency(@cart.cart_items.sum(&:subtotal))
+
+= render 'form'
+

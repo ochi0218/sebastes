@@ -1,0 +1,23 @@
+- @page_title = t('helpers.titles.list', { model: Order.model_name.human })
+
+%p
+  %span.pull-left= t('views.page_info.page', current: @orders.current_page, total: @orders.num_pages)
+  %span.pull-right= t('views.page_info.records', offset: @orders.offset_value+1, limit: (@orders.offset_value + @orders.length), total: @orders.total_count)
+  %span.clearfix
+
+%table.table.table-striped.table-hover
+  %tr
+    %th= Order.human_attribute_name(:order_number)
+    %th= Order.human_attribute_name(:date)
+    %th.action-col
+
+  - @orders.each do |order|
+    %tr
+      %td= order.order_number
+      %td= order.date
+      %td.action-col
+        = link_to order, class: 'btn btn-default btn-xs' do
+          = t('helpers.actions.show')
+
+= paginate @orders
+

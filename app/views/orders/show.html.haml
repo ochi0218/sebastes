@@ -1,0 +1,76 @@
+%table.table.table-striped.table-hover
+  %tr
+    %th.thumb-image-col
+    %th= Item.human_attribute_name(:name)
+    %th= Item.human_attribute_name(:price)
+    %th= OrderItem.human_attribute_name(:quantity)
+    %th= OrderItem.human_attribute_name(:subtotal)
+
+  - @order.order_items.each do |order_item|
+    %tr
+      - if order_item.item.image.present?
+        %td.thumb-image-col= image_tag order_item.item.image.thumb
+      - else
+        %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
+      %td= order_item.item.name
+      %td= number_to_currency(order_item.item.price)
+      %td= number_to_human(order_item.quantity, units: 'number.human.quantity_units.units')
+      %td= number_to_currency(order_item.subtotal)
+  %tr.success
+    %th{ colspan: 4 }= t('helpers.currency.total')
+    %td{ colspan: 3 }= number_to_currency(@order.order_items.sum(&:subtotal))
+
+%br
+
+%div.show
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:order_number)
+    %div.col-sm-10
+      = @order.order_number
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:date)
+    %div.col-sm-10
+      = @order.date
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:destination_name)
+    %div.col-sm-10
+      = @order.destination_name
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:destination_zip_code)
+    %div.col-sm-10
+      = @order.destination_zip_code
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:destination_address)
+    %div.col-sm-10
+      = simple_format(@order.destination_address)
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:payment_method)
+    %div.col-sm-10
+      = @order.payment_method.text
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:fee)
+    %div.col-sm-10
+      = @order.fee
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:delivery_fee)
+    %div.col-sm-10
+      = @order.delivery_fee
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:delivery_date)
+    %div.col-sm-10
+      = @order.delivery_date
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:delivery_time_zone)
+    %div.col-sm-10
+      = @order.delivery_time_zone.text if @order.delivery_time_zone.present?
+

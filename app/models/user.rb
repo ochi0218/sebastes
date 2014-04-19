@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :coupon_logs
   has_many :diaries
   has_many :comments
+  has_many :orders
 
   validates :destination_zip_code, format: { with: /\d{3,}-\d{4,}/ }, allow_blank: true
   validates :profile_image, file_size: { maximum: 0.5.megabytes.to_i }
@@ -38,6 +39,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  #
+  # 配送先情報を付加して注文を新規作成する。
+  #
+  def new_order_with_destination_info
+    Order.new.tap{|order|
+      order.destination_zip_code = self.destination_zip_code
+      order.destination_address = self.destination_address
+      order.destination_name = self.destination_name
+    }
+  end
+
   private
 
   #
@@ -60,8 +72,7 @@ class User < ActiveRecord::Base
   # 新たにユーザポイント履歴を作成する。
   #
   def create_user_point_log(user_point_log)
-    user_point_log.user = self if user_point_log.user.nil?
-    user_point_log.log_date = DateTime.now if user_point_log.log_date.nil?
+    user_point_log.log_date = DateTime.now
     user_point_log.kind = :system if user_point_log.kind.nil?
     user_point_log.before_point = self.point
 

@@ -1,0 +1,15 @@
+= simple_form_for @order, html: { class: 'form-horizontal' } do |f|
+  - if notification = f.error_notification
+    = notification
+
+  = f.input :destination_name
+  = f.input :destination_zip_code
+  = f.input :destination_address
+  = f.input :payment_method, disabled: true, selected: false
+  = f.input :payment_method, as: :hidden, input_html: { value: Order.payment_method.find_value(:cash_on_delivery).value }
+  = f.input :delivery_date, include_blank: true
+  = f.input :delivery_time_zone
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+

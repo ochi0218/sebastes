@@ -11,7 +11,7 @@
     %th= Item.human_attribute_name(:name)
     %th= Item.human_attribute_name(:price)
     %th= CartItem.human_attribute_name(:quantity)
-    %th= t('.subtotal')
+    %th= CartItem.human_attribute_name(:subtotal)
     %th.action-col
     %th.action-col
 
@@ -34,8 +34,11 @@
           %i.glyphicon.glyphicon-trash
           = t('helpers.actions.destroy')
   %tr.success
-    %th{ colspan: 4 }= t('.total')
+    %th{ colspan: 4 }= t('helpers.currency.total')
     %td{ colspan: 3 }= number_to_currency(@cart_items.sum(&:subtotal))
 
 = paginate @cart_items
+
+- unless @cart_items.empty?
+  = link_to t('.goto_order'), new_order_path, class: 'btn btn-primary btn-white'
 

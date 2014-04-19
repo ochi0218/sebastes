@@ -130,7 +130,9 @@ ja:
       carrierwave_download_error: はダウンロードできません
       extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
       extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
+      negative_number_of_item_stock: '在庫変動後の値を0以上になる値にしてください。'
       negative_number_of_change_point: 'ポイント変動後の値を0以上になる値にしてください。'
+      deliverable_delivery_date: '配送可能な日を指定してください。'
     template:
       body: '次の項目を確認してください。'
       header:
@@ -154,6 +156,8 @@ ja:
       delete: '削除しますか？'
     select:
       prompt: '選択してください。'
+    currency:
+      total: '合計'
     actions:
       show: '表示'
       edit: '編集'
@@ -259,6 +263,8 @@ ja:
       comment: 'コメント'
       cart: 'カート'
       cart_item: 'カート商品'
+      order: '注文'
+      order_item: '注文商品'
     attributes:
       item:
         name: '商品名'
@@ -306,6 +312,22 @@ ja:
         contents: 'コメント'
       cart_item:
         quantity: '数量'
+        subtotal: '小計'
+      order:
+        order_number: '注文番号'
+        date: '注文日時'
+        destination_zip_code: '送付先(郵便番号)'
+        destination_address: '送付先(住所)'
+        destination_name: '送付先(名前)'
+        payment_method: '決済方法'
+        delivery_date: '希望配送日'
+        delivery_time_zone: '希望配送時間帯'
+        fee: '手数料'
+        delivery_fee: '配送手数料'
+      order_item:
+        quantity: '数量'
+        price: '価格'
+        subtotal: '小計'
     errors:
       <<: *errors
   enumerize:
@@ -314,6 +336,16 @@ ja:
         system: 'システム'
         coupon: 'クーポン'
         used: '利用'
+    order:
+      payment_method:
+        cash_on_delivery: '代引き決済'
+      delivery_time_zone:
+        zone_8_12: '8-12時'
+        zone_12_14: '12-14時'
+        zone_14_16: '14-16時'
+        zone_16_18: '16-18時'
+        zone_18_20: '18-20時'
+        zone_20_21: '20-21時'
   views:
     pagination:
       first: "&laquo; 最初へ"
@@ -350,6 +382,7 @@ ja:
     change_registation: 'ユーザ情報を変更する'
     change_destination: '配送先情報を変更する'
     user_point_log: 'ポイント履歴を見る'
+    order: '購入履歴を見る'
   items:
     index:
       item_rest: "( 残り: %{stock} )"
@@ -357,8 +390,7 @@ ja:
       add_cart_button: 'カートに入れる'
   cart_items:
     index:
-      subtotal: '計'
-      total: '小計'
+      goto_order: 'レジに進む'
   diaries:
     good:
       good_button: 'Good!'

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  order_number: MyString
+  date: 2014-04-15 23:27:38
+  destination_zip_code: MyString
+  destination_address: MyString
+  destination_name: MyString
+  payment_method: 1
+  fee: 1
+  delivery_fee: 1
+  use_point: 1
+  delivery_date: 2014-04-15
+  delivery_time_zone_start: 2014-04-15 23:27:38
+  delivery_time_zone_end: 2014-04-15 23:27:38
+
+two:
+  user_id: 1
+  order_number: MyString
+  date: 2014-04-15 23:27:38
+  destination_zip_code: MyString
+  destination_address: MyString
+  destination_name: MyString
+  payment_method: 1
+  fee: 1
+  delivery_fee: 1
+  use_point: 1
+  delivery_date: 2014-04-15
+  delivery_time_zone_start: 2014-04-15 23:27:38
+  delivery_time_zone_end: 2014-04-15 23:27:38
