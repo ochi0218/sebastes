@@ -36,12 +36,12 @@
       - @diary.comments.each do |comment|
         %tr
           %td= simple_format(comment.contents)
-          %td
+          %td.action-col
             - if comment.user == current_user
               = link_to [:edit, @diary, comment], class: 'btn btn-primary btn-white btn-xs' do
                 %i.glyphicon.glyphicon-edit
                 = t('helpers.actions.edit')
-          %td
+          %td.action-col
             - if comment.user == current_user
               = link_to [@diary, comment], method: :delete, data: { confirm: t('helpers.confirm.delete') }, class: 'btn btn-danger btn-white btn-xs' do
                 %i.glyphicon.glyphicon-trash
