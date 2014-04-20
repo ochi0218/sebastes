@@ -14,7 +14,7 @@
   - @orders.each do |order|
     %tr
       %td= order.order_number
-      %td= order.date
+      %td= l order.date, format: :long
       %td.action-col
         = link_to order, class: 'btn btn-default btn-xs' do
           = t('helpers.actions.show')

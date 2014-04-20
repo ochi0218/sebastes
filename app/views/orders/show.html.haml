@@ -19,6 +19,15 @@
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
     %td{ colspan: 3 }= number_to_currency(@order.order_items.sum(&:subtotal))
+  %tr.info
+    %th{ colspan: 4 }= Order.human_attribute_name(:fee)
+    %td{ colspan: 3 }= number_to_currency(@order.fee)
+  %tr.info
+    %th{ colspan: 4 }= Order.human_attribute_name(:delivery_fee)
+    %td{ colspan: 3 }= number_to_currency(@order.delivery_fee)
+  %tr.warning
+    %th{ colspan: 4 }= t('helpers.currency.total')
+    %td{ colspan: 3 }= number_to_currency(@order.order_items.sum(&:subtotal)+@order.fee+@order.delivery_fee)
 
 %br
 
@@ -32,7 +41,7 @@
     %div.col-sm-2
       %b= Order.human_attribute_name(:date)
     %div.col-sm-10
-      = @order.date
+      = l @order.date, format: :long
   %div.row
     %div.col-sm-2
       %b= Order.human_attribute_name(:destination_name)
@@ -47,7 +56,7 @@
     %div.col-sm-2
       %b= Order.human_attribute_name(:destination_address)
     %div.col-sm-10
-      = simple_format(@order.destination_address)
+      = simple_format @order.destination_address
   %div.row
     %div.col-sm-2
       %b= Order.human_attribute_name(:payment_method)
@@ -55,19 +64,9 @@
       = @order.payment_method.text
   %div.row
     %div.col-sm-2
-      %b= Order.human_attribute_name(:fee)
-    %div.col-sm-10
-      = @order.fee
-  %div.row
-    %div.col-sm-2
-      %b= Order.human_attribute_name(:delivery_fee)
-    %div.col-sm-10
-      = @order.delivery_fee
-  %div.row
-    %div.col-sm-2
       %b= Order.human_attribute_name(:delivery_date)
     %div.col-sm-10
-      = @order.delivery_date
+      = l @order.delivery_date, format: :long if @order.delivery_date.present?
   %div.row
     %div.col-sm-2
       %b= Order.human_attribute_name(:delivery_time_zone)
