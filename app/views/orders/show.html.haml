@@ -18,7 +18,7 @@
       %td= number_to_currency(order_item.subtotal)
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@order.order_items.sum(&:subtotal))
+    %td{ colspan: 3 }= number_to_currency(@order.order_items.to_a.sum(&:subtotal))
   %tr.info
     %th{ colspan: 4 }= Order.human_attribute_name(:fee)
     %td{ colspan: 3 }= number_to_currency(@order.fee)
@@ -27,7 +27,7 @@
     %td{ colspan: 3 }= number_to_currency(@order.delivery_fee)
   %tr.warning
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@order.order_items.sum(&:subtotal)+@order.fee+@order.delivery_fee)
+    %td{ colspan: 3 }= number_to_currency(@order.order_items.to_a.sum(&:subtotal)+@order.fee+@order.delivery_fee)
 
 %br
 

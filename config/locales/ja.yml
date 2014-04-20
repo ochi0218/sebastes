@@ -133,6 +133,8 @@ ja:
       negative_number_of_item_stock: '在庫変動後の値を0以上になる値にしてください。'
       negative_number_of_change_point: 'ポイント変動後の値を0以上になる値にしてください。'
       deliverable_delivery_date: '配送可能な日を指定してください。'
+      not_enable_add_item: '商品の在庫数以上の個数を追加することは出来ません。'
+      item_stock_below: '%{item_name} の在庫数が足りません。商品数を減らしてください。'
     template:
       body: '次の項目を確認してください。'
       header:

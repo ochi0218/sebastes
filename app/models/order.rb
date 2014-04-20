@@ -20,8 +20,9 @@ class Order < ActiveRecord::Base
 
   validate :validate_available_use_point
   validate :validate_deliverable_delivery_date
-  validates :date, :destination_zip_code, :destination_address, :destination_name, :payment_method, presence: true
+  validates :destination_zip_code, :destination_address, :destination_name, :payment_method, presence: true
   validates_numericality_of :use_point, greater_than: 0, allow_blank: true
+  validates_numericality_of :fee, :delivery_fee, greater_than_or_equal_to: 0
 
   extend Enumerize
   enumerize :payment_method, in: { cash_on_delivery: 1 }
@@ -33,21 +34,28 @@ class Order < ActiveRecord::Base
   # 注文を確定する。
   #
   def decided(cart)
+    self.fee = calc_fee(cart)
+    self.delivery_fee = calc_delivery_fee(cart)
+
     self.transaction do
       cart.cart_items.each do |cart_item|
-        self.order_items << self.order_items.build({ item_id: cart_item.item_id, price: cart_item.item.price, quantity: cart_item.quantity })
-        cart_item.item.remove_stock!(cart_item.quantity)
+        order_item = self.order_items.build({ item_id: cart_item.item_id, price: cart_item.item.price, quantity: cart_item.quantity })
+        self.order_items << order_item
+
+        unless order_item.item.confirm_stock_of(order_item.quantity)
+          errors.add(:order_items, :item_stock_below, { item_name: order_item.item.name })
+          return false
+        end
+
+        order_item.item.remove_stock(order_item.quantity)
       end
 
       self.user.use_point(self.use_point) if self.use_point.present?
-
       cart.destroy
 
-      self.fee = calc_fee(cart)
-      self.delivery_fee = calc_delivery_fee(cart)
       self.save!
     end
-  rescue
+  rescue ActiveRecord::RecordInvalid
     false
   end
 
@@ -55,7 +63,7 @@ class Order < ActiveRecord::Base
   # 手数料を計算する
   #
   def calc_fee(cart)
-    total = cart.cart_items.sum(&:subtotal)
+    total = cart.cart_items.to_a.sum(&:subtotal)
     if total < 10_000
       FEE_0_to_10_000
     elsif total < 30_000
@@ -71,7 +79,7 @@ class Order < ActiveRecord::Base
   # 送料を計算する
   #
   def calc_delivery_fee(cart)
-    items_quantity = cart.cart_items.sum(&:quantity)
+    items_quantity = cart.cart_items.to_a.sum(&:quantity)
     DELIVERY_FEE * (items_quantity / DELIVERY_FEE_PER_QUANTITY).to_i
   end
 
@@ -79,7 +87,7 @@ class Order < ActiveRecord::Base
   # 手数料等を含めた合計を計算する。
   #
   def calc_total_contains_any_fee(cart)
-    total = cart.cart_items.sum(&:subtotal)
+    total = cart.cart_items.to_a.sum(&:subtotal)
     total += calc_fee(cart)
     total += calc_delivery_fee(cart)
   end

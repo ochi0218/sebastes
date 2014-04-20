@@ -40,11 +40,20 @@ class Item < ActiveRecord::Base
   #
   # 在庫を減らす。
   #
-  def remove_stock!(remove_stock_num)
+  def remove_stock(remove_stock_num)
     self.with_lock do
       remove_stock = (remove_stock_num.present? ? remove_stock_num : 0)
       self.stock -= remove_stock.to_i
       self.save!
+    end
+  end
+
+  #
+  # 指定の個数より多いか確認する。
+  #
+  def confirm_stock_of(quantity)
+    self.with_lock do
+      self.stock >= quantity
     end
   end
 end
