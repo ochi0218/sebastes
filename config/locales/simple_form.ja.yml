@@ -79,4 +79,5 @@ ja:
         delivery_time_zone: '希望配送時間帯'
         fee: '手数料'
         delivery_fee: '配送手数料'
+        use_point: 'ポイント利用'
 

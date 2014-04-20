@@ -23,6 +23,23 @@ class User < ActiveRecord::Base
   before_validation :blank_password_to_nil
 
   #
+  # ポイントを利用する。
+  #
+  def use_point(point)
+    return if point.nil? or point == 0
+
+    self.with_lock do 
+      user_point_log = self.user_point_logs.build({ kind: :use, change_point: -point })
+      user_point_log.save!
+
+      self.point -= point
+      self.save!
+    end
+  rescue
+    false
+  end
+
+  #
   # クーポンからポイントを更新する。
   #
   def update_point_by_coupon(coupon)

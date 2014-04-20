@@ -9,6 +9,7 @@
   = f.input :payment_method, as: :hidden, input_html: { value: Order.payment_method.find_value(:cash_on_delivery).value }
   = f.input :delivery_date, include_blank: true
   = f.input :delivery_time_zone
+  = f.input :use_point, hint: t('orders.form.hint.use_point', { point: @order.user.point })
 
   .form-actions
     = f.button :submit, class: 'btn-primary'

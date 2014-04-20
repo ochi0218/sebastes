@@ -20,6 +20,15 @@
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
     %td{ colspan: 3 }= number_to_currency(@cart.cart_items.sum(&:subtotal))
+  %tr.info
+    %th{ colspan: 4 }= Order.human_attribute_name(:fee)
+    %td{ colspan: 3 }= number_to_currency(@order.calc_fee(@cart))
+  %tr.info
+    %th{ colspan: 4 }= Order.human_attribute_name(:delivery_fee)
+    %td{ colspan: 3 }= number_to_currency(@order.calc_delivery_fee(@cart))
+  %tr.warning
+    %th{ colspan: 4 }= t('helpers.currency.total')
+    %td{ colspan: 3 }= number_to_currency(@order.calc_total_contains_any_fee(@cart))
 
 = render 'form'
 

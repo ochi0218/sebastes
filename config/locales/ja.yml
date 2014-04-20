@@ -324,6 +324,7 @@ ja:
         delivery_time_zone: '希望配送時間帯'
         fee: '手数料'
         delivery_fee: '配送手数料'
+        use_point: '利用ポイント'
       order_item:
         quantity: '数量'
         price: '価格'
@@ -403,6 +404,10 @@ ja:
     update:
       coupon_use_success: 'クーポンからポイントを付与しました。'
       coupon_not_available: '指定のクーポンは利用出来ません。'
+  orders:
+    form:
+      hint:
+        use_point: '利用可能なポイント数は %{point} pt です。'
   diary_notifier:
     add_comment:
       subject: 'あなたの日記にコメントがつきました'
