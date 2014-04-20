@@ -33,18 +33,18 @@ class Item < ActiveRecord::Base
     self.with_lock do
       add_stock = (add_stock_num.present? ? add_stock_num : 0)
       self.stock += add_stock.to_i
-      self.update({ stock: self.stock })
+      self.save
     end
   end
 
   #
   # 在庫を減らす。
   #
-  def remove_stock(remove_stock_num)
+  def remove_stock!(remove_stock_num)
     self.with_lock do
       remove_stock = (remove_stock_num.present? ? remove_stock_num : 0)
       self.stock -= remove_stock.to_i
-      self.update({ stock: self.stock })
+      self.save!
     end
   end
 end

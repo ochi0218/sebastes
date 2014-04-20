@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   validates :destination_zip_code, format: { with: /\d{3,}-\d{4,}/ }, allow_blank: true
   validates :profile_image, file_size: { maximum: 0.5.megabytes.to_i }
+  validates_numericality_of :point, greater_than_or_equal_to: 0, message: :negative_number_of_change_point
 
   scope :by_newest, -> { order(updated_at: :desc) }
   default_scope by_newest
@@ -22,12 +23,36 @@ class User < ActiveRecord::Base
   before_validation :blank_password_to_nil
 
   #
-  # ポイントを更新する。
+  # クーポンからポイントを更新する。
   #
-  def update_user_point(user_point_log)
+  def update_point_by_coupon(coupon)
     self.with_lock do 
-      update_point(user_point_log) if create_user_point_log(user_point_log)
+      user_point_log = self.user_point_logs.build({ kind: :coupon, change_point: coupon.point })
+      user_point_log.save!
+
+      self.point += coupon.point
+      self.save!
     end
+  rescue
+    false
+  end
+
+  #
+  # システムからのポイントを付与する。
+  #
+  def add_point_by_system(user_point_log)
+    self.with_lock do
+      return true if user_point_log.change_point == 0
+
+      user_point_log.kind = :system
+      user_point_log.save!
+
+      add_point_num = user_point_log.change_point.present? ? user_point_log.change_point : 0
+      self.point += add_point_num.to_i
+      self.save!
+    end
+  rescue
+    false
   end
 
   #
@@ -43,11 +68,7 @@ class User < ActiveRecord::Base
   # 配送先情報を付加して注文を新規作成する。
   #
   def new_order_with_destination_info
-    Order.new.tap{|order|
-      order.destination_zip_code = self.destination_zip_code
-      order.destination_address = self.destination_address
-      order.destination_name = self.destination_name
-    }
+    self.orders.build({ destination_zip_code: self.destination_zip_code, destination_address: self.destination_address, destination_name: self.destination_name })
   end
 
   private
@@ -58,25 +79,6 @@ class User < ActiveRecord::Base
   def blank_password_to_nil
     self.password = nil if self.password.blank?
     self.password_confirmation = nil if self.password_confirmation.blank?
-  end
-
-  #
-  # ユーザポイント履歴からポイントを更新する。
-  #
-  def update_point(user_point_log)
-    new_point = self.point + user_point_log.change_point
-    self.update_attribute(:point, new_point)
-  end
-
-  #
-  # 新たにユーザポイント履歴を作成する。
-  #
-  def create_user_point_log(user_point_log)
-    user_point_log.log_date = DateTime.now
-    user_point_log.kind = :system if user_point_log.kind.nil?
-    user_point_log.before_point = self.point
-
-    user_point_log.save
   end
 end
 

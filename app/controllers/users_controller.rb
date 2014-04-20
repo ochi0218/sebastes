@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def destination_update
     respond_to do |format|
       if @user.update_with_lock(user_destination_params)
-        format.html { redirect_to action: 'destination_edit', notice: I18n.t('helpers.notice.success.update', { model: User.model_name.human }) }
+        format.html { redirect_to root_path, notice: I18n.t('helpers.notice.success.update', { model: User.model_name.human }) }
       else
         format.html { render action: 'destination_edit' }
       end

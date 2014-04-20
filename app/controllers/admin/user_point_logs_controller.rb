@@ -13,9 +13,9 @@ class Admin::UserPointLogsController < Admin::ApplicationController
   # POST /admin/user_point_logs
   # POST /admin/user_point_logs.json
   def create
+    @user_point_log = current_user.user_point_logs.build(user_point_log_params)
     respond_to do |format|
-      @user_point_log = @user.user_point_logs.build(user_point_log_params)
-      if @user.update_user_point(@user_point_log)
+      if @user.add_point_by_system(@user_point_log)
         format.html { redirect_to [:admin, @user], notice: I18n.t('helpers.notice.success.update', { model: UserPointLog.model_name.human }) }
       else
         format.html { render action: 'new' }

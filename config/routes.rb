@@ -3,9 +3,16 @@ Sebastes::Application.routes.draw do
   devise_for :admin_users, controllers: { sessions: 'admin/sessions' }
   devise_for :users
 
-  get 'users/destination/edit' => 'users#destination_edit', as: 'edit_users_distination'
-  patch 'users/destination' => 'users#destination_update', as: 'users_distination'
+  scope 'users' do
+    get 'destination' => 'users#destination_edit', as: 'edit_user_destination'
+    patch 'destination' => 'users#destination_update', as: 'user_destination'
+  end
 
+  resource :coupons, only: [:update] do
+    member do
+      get 'find'
+    end
+  end
   resources :orders, except: [:edit, :update]
   resources :user_point_logs, only: [:index]
   resources :items, only: [:index]

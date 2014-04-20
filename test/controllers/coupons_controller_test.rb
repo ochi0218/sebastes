@@ -18,7 +18,7 @@ class CouponsControllerTest < ActionController::TestCase
 
   test "should create coupon" do
     assert_difference('Coupon.count') do
-      post :create, coupon: { code: @coupon.code, point: @coupon.point, used: @coupon.used, used_datetime: @coupon.used_datetime }
+      post :create, coupon: {  }
     end
 
     assert_redirected_to coupon_path(assigns(:coupon))
@@ -35,7 +35,7 @@ class CouponsControllerTest < ActionController::TestCase
   end
 
   test "should update coupon" do
-    patch :update, id: @coupon, coupon: { code: @coupon.code, point: @coupon.point, used: @coupon.used, used_datetime: @coupon.used_datetime }
+    patch :update, id: @coupon, coupon: {  }
     assert_redirected_to coupon_path(assigns(:coupon))
   end
 

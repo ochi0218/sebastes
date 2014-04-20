@@ -21,16 +21,19 @@ class Order < ActiveRecord::Base
     self.transaction do
       cart.cart_items.each do |cart_item|
         self.order_items << self.order_items.build({ item_id: cart_item.item_id, price: cart_item.item.price, quantity: cart_item.quantity })
-        cart_item.item.remove_stock(cart_item.quantity)
+        cart_item.item.remove_stock!(cart_item.quantity)
       end
+
+      cart.destroy
 
       self.date = DateTime.now
       self.save!
-      cart.destroy
     end
-    rescue
-      false
+  rescue
+    false
   end
+
+  private
 
   #
   # 注文番号を生成する。
