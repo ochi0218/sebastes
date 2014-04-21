@@ -21,11 +21,6 @@
               = link_to add_cart_item_path(item), class: 'btn btn-xs btn-white btn-success' do
                 %i.glyphicon.glyphicon-shopping-cart
                 = t('.add_cart_button')
-            %span.pull-right
-              &nbsp;&nbsp;
-            %span.pull-right
-              = link_to '#', class: 'btn btn-xs btn-white btn-info' do
-                = t('.show_detail_button')
             %span.clearfix
 
 = paginate @items

@@ -17,7 +17,7 @@ class Provide::ItemsController < Provide::ApplicationController
 
   def update
     respond_to do |format|
-      if @item.add_stock(params[:item][:add_stock_num])
+      if @item.add_stock(item_params[:add_stock_num])
         format.html { redirect_to [:provide, @item], notice: I18n.t('helpers.notice.success.update', { model: Item.model_name.human }) }
         format.json { head :no_content }
       else

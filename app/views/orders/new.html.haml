@@ -7,28 +7,28 @@
     %th= CartItem.human_attribute_name(:quantity)
     %th= CartItem.human_attribute_name(:subtotal)
 
-  - @cart.cart_items.each do |cart_item|
+  - @order.order_items.each do |order_item|
     %tr
-      - if cart_item.item.image.present?
-        %td.thumb-image-col= image_tag cart_item.item.image.thumb
+      - if order_item.item.image.present?
+        %td.thumb-image-col= image_tag order_item.item.image.thumb
       - else
         %td.thumb-image-col= image_tag 'http://placehold.it/50&text=NoImage'
-      %td= cart_item.item.name
-      %td= number_to_currency(cart_item.item.price)
-      %td= number_to_human(cart_item.quantity, units: 'number.human.quantity_units.units')
-      %td= number_to_currency(cart_item.subtotal)
+      %td= order_item.item.name
+      %td= number_to_currency(order_item.item.price)
+      %td= number_to_human(order_item.quantity, units: 'number.human.quantity_units.units')
+      %td= number_to_currency(order_item.subtotal)
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@cart.cart_items.to_a.sum(&:subtotal))
+    %td{ colspan: 3 }= number_to_currency(@order.total_items_price)
   %tr.info
     %th{ colspan: 4 }= Order.human_attribute_name(:fee)
-    %td{ colspan: 3 }= number_to_currency(@order.calc_fee(@cart))
+    %td{ colspan: 3 }= number_to_currency(@order.fee)
   %tr.info
     %th{ colspan: 4 }= Order.human_attribute_name(:delivery_fee)
-    %td{ colspan: 3 }= number_to_currency(@order.calc_delivery_fee(@cart))
+    %td{ colspan: 3 }= number_to_currency(@order.delivery_fee)
   %tr.warning
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@order.calc_total_contains_any_fee(@cart))
+    %td{ colspan: 3 }= number_to_currency(@order.total_price)
 
 = render 'form'
 

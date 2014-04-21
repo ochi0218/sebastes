@@ -3,13 +3,12 @@
 #
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :destroy]
-  before_action :set_cart, only: [:new, :create]
   before_action :authenticate_user!
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = current_user.orders.page
+    @orders = current_user.orders.by_order_date.page
   end
 
   # GET /orders/1
@@ -19,17 +18,17 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = current_user.new_order_with_destination_info
+    @order = Order.from_user_with_cart(current_user, current_cart)
   end
 
   # POST /orders
   # POST /orders.json
   def create
-    @order = current_user.orders.build(order_params)
+    @order = current_user.orders.build(order_params).with_cart(current_cart)
 
     respond_to do |format|
-      if @order.decided(@cart)
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+      if current_user.purchase(@order, current_cart)
+        format.html { redirect_to @order, notice: I18n.t('orders.create.success') }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -54,12 +53,8 @@ class OrdersController < ApplicationController
       @order = current_user.orders.find(params[:id])
     end
 
-    def set_cart
-      @cart = current_cart
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :order_number, :date, :destination_zip_code, :destination_address, :destination_name, :payment_method, :use_point, :delivery_date, :delivery_time_zone)
+      params.require(:order).permit(:destination_zip_code, :destination_address, :destination_name, :payment_method, :use_point, :delivery_date, :delivery_time_zone)
     end
 end

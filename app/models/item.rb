@@ -40,7 +40,7 @@ class Item < ActiveRecord::Base
   #
   # 在庫を減らす。
   #
-  def remove_stock(remove_stock_num)
+  def remove_stock!(remove_stock_num)
     self.with_lock do
       remove_stock = (remove_stock_num.present? ? remove_stock_num : 0)
       self.stock -= remove_stock.to_i
@@ -55,5 +55,9 @@ class Item < ActiveRecord::Base
     self.with_lock do
       self.stock >= quantity
     end
+  end
+  
+  def to_s
+    self.name
   end
 end

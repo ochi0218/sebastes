@@ -23,34 +23,38 @@ class User < ActiveRecord::Base
   before_validation :blank_password_to_nil
 
   #
-  # ポイントを利用する。
+  # クーポンを利用する。
   #
-  def use_point(point)
-    return if point.nil? or point == 0
+  def use_coupon(coupon)
+    return if coupon.nil?
 
-    self.with_lock do 
-      user_point_log = self.user_point_logs.build({ kind: :use, change_point: -point })
-      user_point_log.save!
+    self.with_lock do
+      return if coupon.available?
 
-      self.point -= point
-      self.save!
-    end
-  rescue
-    false
-  end
-
-  #
-  # クーポンからポイントを更新する。
-  #
-  def update_point_by_coupon(coupon)
-    self.with_lock do 
       user_point_log = self.user_point_logs.build({ kind: :coupon, change_point: coupon.point })
       user_point_log.save!
 
       self.point += coupon.point
       self.save!
+
+      coupon.used!(self)
     end
-  rescue
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
+  #
+  # カートの商品を購入する。
+  #
+  def purchase(order, cart)
+    self.with_lock do
+      order.decided!
+      cart.destroy
+
+      self.use_point(order.use_point) if order.use_point.present?
+      true
+    end
+  rescue ActiveRecord::RecordInvalid
     false
   end
 
@@ -81,21 +85,27 @@ class User < ActiveRecord::Base
     end
   end
 
-  #
-  # 配送先情報を付加して注文を新規作成する。
-  #
-  def new_order_with_destination_info
-    self.orders.build({ destination_zip_code: self.destination_zip_code, destination_address: self.destination_address, destination_name: self.destination_name })
-  end
-
   private
 
-  #
-  # 空白のパスワードをnilにする
-  #
-  def blank_password_to_nil
-    self.password = nil if self.password.blank?
-    self.password_confirmation = nil if self.password_confirmation.blank?
-  end
+    #
+    # 空白のパスワードをnilにする
+    #
+    def blank_password_to_nil
+      self.password = nil if self.password.blank?
+      self.password_confirmation = nil if self.password_confirmation.blank?
+    end
+
+    #
+    # ポイントを利用する。
+    #
+    def use_point(point)
+      return if point.nil? or point == 0
+
+      user_point_log = self.user_point_logs.build({ kind: :used, change_point: -point })
+      user_point_log.save!
+
+      self.point -= point
+      self.save!
+    end
 end
 

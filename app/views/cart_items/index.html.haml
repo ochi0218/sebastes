@@ -1,10 +1,5 @@
 - @page_title = t('helpers.titles.list', { model: CartItem.model_name.human })
 
-%p
-  %span.pull-left= t('views.page_info.page', current: @cart_items.current_page, total: @cart_items.num_pages)
-  %span.pull-right= t('views.page_info.records', offset: @cart_items.offset_value+1, limit: (@cart_items.offset_value + @cart_items.length), total: @cart_items.total_count)
-  %span.clearfix
-
 %table.table.table-striped.table-hover
   %tr
     %th.thumb-image-col
@@ -35,9 +30,7 @@
           = t('helpers.actions.destroy')
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@cart_items.sum(&:subtotal))
-
-= paginate @cart_items
+    %td{ colspan: 3 }= number_to_currency(@cart_items.to_a.sum(&:subtotal))
 
 - unless @cart_items.empty?
   = link_to t('.goto_order'), new_order_path, class: 'btn btn-primary btn-white'

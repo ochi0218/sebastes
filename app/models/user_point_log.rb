@@ -17,17 +17,17 @@ class UserPointLog < ActiveRecord::Base
 
   private
 
-  #
-  # 前回ポイントを設定する。
-  #
-  def set_before_point
-    self.before_point = self.user.point
-  end
+    #
+    # 前回ポイントを設定する。
+    #
+    def set_before_point
+      self.before_point = self.user.point
+    end
 
-  #
-  # ログ日付を設定する。
-  #
-  def set_log_date
-    self.log_date = DateTime.now
-  end
+    #
+    # ログ日付を設定する。
+    #
+    def set_log_date
+      self.log_date = DateTime.now
+    end
 end

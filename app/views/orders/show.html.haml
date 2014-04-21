@@ -18,7 +18,7 @@
       %td= number_to_currency(order_item.subtotal)
   %tr.success
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@order.order_items.to_a.sum(&:subtotal))
+    %td{ colspan: 3 }= number_to_currency(@order.total_items_price)
   %tr.info
     %th{ colspan: 4 }= Order.human_attribute_name(:fee)
     %td{ colspan: 3 }= number_to_currency(@order.fee)
@@ -27,7 +27,7 @@
     %td{ colspan: 3 }= number_to_currency(@order.delivery_fee)
   %tr.warning
     %th{ colspan: 4 }= t('helpers.currency.total')
-    %td{ colspan: 3 }= number_to_currency(@order.order_items.to_a.sum(&:subtotal)+@order.fee+@order.delivery_fee)
+    %td{ colspan: 3 }= number_to_currency(@order.total_price)
 
 %br
 
@@ -72,4 +72,15 @@
       %b= Order.human_attribute_name(:delivery_time_zone)
     %div.col-sm-10
       = @order.delivery_time_zone.text if @order.delivery_time_zone.present?
+  %div.row
+    %div.col-sm-2
+      %b= Order.human_attribute_name(:delivery_date)
+    %div.col-sm-10
+      = l @order.delivery_date, format: :long if @order.delivery_date.present?
+  - if @order.use_point.present?
+    %div.row
+      %div.col-sm-2
+        %b= Order.human_attribute_name(:use_point)
+      %div.col-sm-10
+        = number_to_human(@order.use_point, units: 'number.human.point_units.units')
 

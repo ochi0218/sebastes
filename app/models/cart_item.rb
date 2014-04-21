@@ -21,12 +21,12 @@ class CartItem < ActiveRecord::Base
 
   private
 
-  #
-  # 指定個数の商品を追加可能か。
-  #
-  def enable_add_quantity
-    if self.quantity > self.item.stock
-      errors.add(:quantity, :not_enable_add_item)
+    #
+    # 指定個数の商品を追加可能か。
+    #
+    def enable_add_quantity
+      if self.quantity > self.item.stock
+        errors.add(:quantity, :not_enable_add_item)
+      end
     end
-  end
 end

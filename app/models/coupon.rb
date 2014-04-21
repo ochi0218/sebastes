@@ -14,20 +14,14 @@ class Coupon < ActiveRecord::Base
   default_scope by_newest
 
   #
-  # クーポンを利用する。
+  # クーポンを利用済みにする。
   #
-  def use_by(user)
-    self.transaction do
-      unless self.available?
-        return false
-      end
+  def used!(user)
+    return unless self.available?
 
-      coupon_log = self.build_coupon_log
-      coupon_log.user = user
-      coupon_log.save!
-
-      user.update_point_by_coupon(self)
-    end
+    coupon_log = self.build_coupon_log
+    coupon_log.user = user
+    coupon_log.save!
   end
 
   #

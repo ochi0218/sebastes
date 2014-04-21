@@ -14,12 +14,12 @@ class CouponsController < ApplicationController
     respond_to do |format|
       if @coupon.nil?
         format.html { 
-            flash.now[:alert] = 'Not Foound'
+            flash.now[:alert] = I18n.t('coupons.update.coupon_not_found')
             render action: 'find'
         }
         format.json { render json: @coupon.errors, status: :not_found }
       else
-        if @coupon.use_by(current_user)
+        if current_user.use_coupon(@coupon)
           format.html { redirect_to root_path, notice: I18n.t('coupons.update.coupon_use_success') }
           format.json { head :no_content }
         else
@@ -35,11 +35,11 @@ class CouponsController < ApplicationController
 
   private 
 
-  def set_coupon
-    @coupon = Coupon.find(:first, conditions: coupon_params)
-  end
+    def set_coupon
+      @coupon = Coupon.find(:first, conditions: coupon_params)
+    end
 
-  def coupon_params
-    params.require(:coupon).permit(:code)
-  end
+    def coupon_params
+      params.require(:coupon).permit(:code)
+    end
 end

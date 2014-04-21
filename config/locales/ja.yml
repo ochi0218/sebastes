@@ -96,7 +96,8 @@ ja:
       second: 秒
       year: 年
   errors: &errors
-    format: ! '%{attribute}%{message}'
+    format: ! '%{message}'
+    nested_format: '[%{model}] %{message}'
     messages:
       accepted: 受諾してください。
       blank: 入力してください。
@@ -126,14 +127,15 @@ ja:
       size_too_small: "ファイルサイズは%{file_size}より大きいサイズにしてください。"
       size_too_big: "ファイルサイズは%{file_size}より小さいサイズにしてください。"
       carrierwave_processing_error: 処理できませんでした
-      carrierwave_integrity_error: は許可されていないファイルタイプです
-      carrierwave_download_error: はダウンロードできません
+      carrierwave_integrity_error: 許可されていないファイルタイプです
+      carrierwave_download_error: ダウンロードできません
       extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
       extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
-      negative_number_of_item_stock: '在庫変動後の値を0以上になる値にしてください。'
+      negative_number_of_item_stock: '在庫が足りません。'
       negative_number_of_change_point: 'ポイント変動後の値を0以上になる値にしてください。'
       deliverable_delivery_date: '配送可能な日を指定してください。'
       not_enable_add_item: '商品の在庫数以上の個数を追加することは出来ません。'
+      use_point_not_available: 'ポイント数がたりません。'
       item_stock_below: '%{item_name} の在庫数が足りません。商品数を減らしてください。'
     template:
       body: '次の項目を確認してください。'
@@ -406,10 +408,13 @@ ja:
     update:
       coupon_use_success: 'クーポンからポイントを付与しました。'
       coupon_not_available: '指定のクーポンは利用出来ません。'
+      coupon_not_found: '指定のクーポンコードは存在しません。'
   orders:
     form:
       hint:
         use_point: '利用可能なポイント数は %{point} pt です。'
+    create:
+      success: '注文を受け付けました。'
   diary_notifier:
     add_comment:
       subject: 'あなたの日記にコメントがつきました'

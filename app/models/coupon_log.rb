@@ -11,10 +11,10 @@ class CouponLog < ActiveRecord::Base
 
   private
 
-  #
-  # 利用日時を設定する。
-  #
-  def set_used_datetime
-    self.used_datetime = DateTime.now
-  end
+    #
+    # 利用日時を設定する。
+    #
+    def set_used_datetime
+      self.used_datetime = DateTime.now
+    end
 end
