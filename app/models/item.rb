@@ -56,7 +56,10 @@ class Item < ActiveRecord::Base
       self.stock >= quantity
     end
   end
-  
+
+  #
+  # 文字列に変換する。1
+  #
   def to_s
     self.name
   end
