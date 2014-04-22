@@ -25,7 +25,7 @@ class DiaryNotifier < ActionMailer::Base
   #
   def add_good(diary)
     @diary = diary
-    mail to: diary.user.email do |fromat|
+    mail to: diary.user.email do |format|
       format.html
       format.text
     end
