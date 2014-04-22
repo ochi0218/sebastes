@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     return if coupon.nil?
 
     self.with_lock do
-      return if coupon.available?
+      return unless coupon.available?
 
       user_point_log = self.user_point_logs.build({ kind: :coupon, change_point: coupon.point })
       user_point_log.save!
