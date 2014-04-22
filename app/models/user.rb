@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_numericality_of :point, greater_than_or_equal_to: 0, message: :negative_number_of_change_point
 
   scope :by_newest, -> { order(updated_at: :desc) }
-  default_scope by_newest
+  default_scope { by_newest }
 
   acts_as_voter
   devise :database_authenticatable, :registerable,

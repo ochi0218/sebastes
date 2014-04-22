@@ -11,9 +11,9 @@ class Item < ActiveRecord::Base
   validates_numericality_of :stock, greater_than_or_equal_to: 0, message: :negative_number_of_item_stock
 
   scope :published, -> { where(display_flag: true) }
-  scope :by_publish_sort, -> { order(sort_no: :asc) }
+  scope :by_publish_sort, -> { order(sort_no: :asc, updated_at: :desc) }
   scope :by_newest, -> { order(updated_at: :desc) }
-  default_scope by_newest
+  default_scope { by_publish_sort }
 
   mount_uploader :image, ItemImageUploader
 

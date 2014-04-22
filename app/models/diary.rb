@@ -9,7 +9,7 @@ class Diary < ActiveRecord::Base
   validates :image, file_size: { maximum: 0.5.megabytes.to_i }
 
   scope :by_newest, -> { order(updated_at: :desc) }
-  default_scope by_newest
+  default_scope { by_newest }
 
   acts_as_votable
   mount_uploader :image, DiaryImageUploader

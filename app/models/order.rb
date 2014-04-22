@@ -26,7 +26,7 @@ class Order < ActiveRecord::Base
 
   scope :by_newest, -> { order(updated_at: :desc) }
   scope :by_order_date, -> { order(date: :desc) }
-  default_scope by_newest
+  default_scope { by_newest }
 
   extend Enumerize
   enumerize :payment_method, in: { cash_on_delivery: 1 }
