@@ -55,7 +55,7 @@ class Order < ActiveRecord::Base
     cart.cart_items.each do |cart_item|
       item = cart_item.item
 
-      self.order_items << self.order_items.build({ item_id: item.id, price: item.price, quantity: cart_item.quantity })
+      self.order_items.build({ item_id: item.id, price: item.price, quantity: cart_item.quantity })
     end
 
     self.fee = calc_fee(cart)
