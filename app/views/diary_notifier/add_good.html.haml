@@ -1,4 +1,4 @@
 %p= t('.information_message', title: @diary.title)
 %p
-  = link_to diary_url(@diary), t('.detail_link')
+  = link_to t('.detail_link'), diary_url(@diary)
 
