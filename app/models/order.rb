@@ -145,7 +145,7 @@ class Order < ActiveRecord::Base
         return
       end
     
-      business_days = (today...self.delivery_date).select{ |date| (date.sunday? and date.saturday?) }.size
+      business_days = (today..self.delivery_date).select{ |date| not(date.sunday? or date.saturday?) }.size
       if business_days < 3 or business_days > 14
         errors.add(:delivery_date, :deliverable_delivery_date)
       end
